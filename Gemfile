@@ -76,3 +76,6 @@ gem "devise", "~> 4.8"
 gem "byebug", "~> 11.1"
 
 gem "net-http", "~> 0.2.2"
+
+gem "httparty", "~> 0.20.0"
+gem "yaml", "~> 0.2.0"
