@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
     root "profiles#index"
     resources :profiles
+
+    get "find/:type", to: "profiles#find"
+    post "language", to: "profiles#language", as: "language"
+    post "skill", to: "profiles#skill", as: "skill"
 end

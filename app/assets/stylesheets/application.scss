@@ -54,3 +54,43 @@
   height: 18vw;
   width: 18vw;
 }
+
+.input-wrapper{
+  background: aliceblue;
+  box-shadow: #2E2F30;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  input{
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    padding: 4px 8px;
+    border: none;
+
+    &:focus{
+      outline: none;
+    }
+  }
+
+  .suggestion-box{
+    border-top: 1px solid lightgrey;
+    position: relative;
+    min-height: 50px;
+  }
+
+  .suggestion{
+    padding: 7px 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .selected{
+    background: cornflowerblue;
+  }
+
+  .no-result{
+    padding: 6px 12px;
+  }
+}

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :languages, through: :known_languages
 
 
-  has_many :numbers
-  has_many :emails
-  has_many :addresses
+  has_many :numbers, dependent: :destroy
+  has_many :emails, dependent: :destroy
+  has_many :addresses, dependent: :destroy
 end

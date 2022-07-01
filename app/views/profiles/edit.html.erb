@@ -1,0 +1,82 @@
+<%= turbo_frame_tag "email" do %>
+	<div class="ui medium header">Emails:</div>
+	<ul>
+		<% @user.emails.each do |mail| %>
+			<li><%= mail.email %></li>
+		<% end %>
+		<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+			<%= f.hidden_field "attribute", value: "email" %>
+			<%= f.text_field "email" %>
+			<br/>
+			<%= f.button "save" %>  <%= link_to "Back", profile_path(@user.id) %>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= turbo_frame_tag "number" do %>
+	<div class="ui medium header">Mobile:</div>
+	<ul>
+		<% @user.numbers.each do |number| %>
+			<li><%= number.number %></li>
+		<% end %>
+		<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+			<%= f.hidden_field "attribute", value: "number" %>
+			<%= f.text_field "number" %>
+			<br/>
+			<%= f.button "save" %>  <%= link_to "Back", profile_path(@user.id) %>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= turbo_frame_tag "address" do %>
+	<div class="ui medium header">Address:</div>
+	<ul>
+		<% @user.addresses.each do |address| %>
+			<li><%= address.address %></li>
+		<% end %>
+		<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+			<%= f.hidden_field "attribute", value: "number" %>
+			<%= f.text_area "address" %>
+			<br/>
+			<%= f.button "save" %>  <%= link_to "Back", profile_path(@user.id) %>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= turbo_frame_tag "language" do %>
+	<div data-controller="dropdown" data-dropdown-type-value="language">
+		<div class="ui large header">Language Proficency:</div>
+		<ul class="round-boxes">
+			<% @user.languages.each do |language| %>
+				<li><%= language.name %></li>
+			<% end %>
+		</ul>
+		<%= form_with url: language_path, method: :post do |f| %>
+			<div class="input-wrapper">
+				<%= f.text_field "name", data: {dropdown_target: "input"}, autocomplete: "off"%>
+				<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+			</div>
+			<%= f.button "Add", class: "ui disabled primary button", data: {dropdown_target: "button"} %>
+		<% end %>
+	</div>
+	<%= link_to "Back", profile_path(@user.id) %>
+<% end %>
+
+<%= turbo_frame_tag "skill" do %>
+	<div data-controller="dropdown" data-dropdown-type-value="skill">
+		<div class="ui large header">Skills:</div>
+		<ul class="round-boxes">
+			<% @user.skills.each do |skill| %>
+				<li><%= skill.name %></li>
+			<% end %>
+		</ul>
+		<%= form_with url: skill_path, method: :post do |f| %>
+			<div class="input-wrapper">
+				<%= f.text_field "name", data: {dropdown_target: "input"}, autocomplete: "off"%>
+				<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+			</div>
+			<%= f.button "Add", class: "ui disabled primary button", data: {dropdown_target: "button"} %>
+		<% end %>
+	</div>
+	<%= button_to "Back", profile_path(@user.id), class: "ui button", method: :get %>
+<% end %>

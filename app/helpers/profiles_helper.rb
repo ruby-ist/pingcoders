@@ -5,11 +5,11 @@ module ProfilesHelper
 
         def initialize
             super
-            @options = { query: { site: "stackoverflow"}}
         end
 
         def find_skill name
-            self.class.get("/2.3/tags/#{name}/related", @options)["items"].map{ |i| i["name"] }
+            options = { query: { order: "desc", sort: "popular", site: "stackoverflow", inname: name}}
+            self.class.get("/2.3/tags", options)["items"].map{ |i| i["name"] }.select{ |i| (i =~ /\d/) == nil }
         end
 
         def find_language name

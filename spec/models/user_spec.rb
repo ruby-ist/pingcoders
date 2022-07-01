@@ -20,4 +20,20 @@ RSpec.describe User, type: :model do
         expect(user.numbers).to be_empty
         expect(user.emails).to be_empty
     end
+
+    it "can be deleted" do
+        user.addresses << Address.create(address: "abc street")
+        user.numbers << Number.create(number: "121323232")
+        user.emails << Email.create(email: "23323@gmail.com")
+
+        expect(user.addresses).not_to be_empty
+        expect(user.numbers).not_to be_empty
+        expect(user.emails).not_to be_empty
+
+        user.destroy
+
+        expect(Address.all).to be_empty
+        expect(Number.all).to be_empty
+        expect(Email.all).to be_empty
+    end
 end
