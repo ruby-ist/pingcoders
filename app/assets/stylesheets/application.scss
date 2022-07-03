@@ -13,9 +13,104 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@700&family=Josefin+Sans:wght@400;500;600;700&family=Lato:wght@400;700&display=swap');
+
+body{
+  background: #0c0e12;
+  --blue: #4992fe;
+  --white: #bec7d0;
+  color: #79828c;
+  font-family: 'Lato', sans-serif;
+
+  .ui.header{
+    color:var(--blue);
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+  }
+}
+
+.navbar{
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  position: relative;
+  z-index: 2;
+  background: #121519;
+  border-bottom: 1px solid #24292f;
+
+  h2{
+    display: inline-block;
+    color: var(--blue);
+    margin-left: 20px;
+    font-size: 2rem;
+    font-family: 'Expletus Sans', cursive;
+  }
+
+  .session-btn{
+    display: inline;
+  }
+}
 
 .main{
-  height: 100vh;
+  height: 86vh;
+
+  .five.wide.column{
+    padding: 0;
+    position: relative;
+  }
+}
+
+.section{
+  padding: 6vh 0;
+  overflow-y: scroll;
+  height: 90vh;
+  scrollbar-width: none;
+  position: relative;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+.section:nth-child(1){
+  padding-top: 3vh;
+}
+
+#tsparticles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 60%;
+  z-index: 0;
+}
+
+.vertical-line{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  height: 90vh;
+  width: 1px;
+  background: #24292f;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.horizontal-line{
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 1px;
+  width: 110%;
+  background: #24292f;
+  transform: translateX(-50%);
+  z-index: 3;
 }
 
 .user-profile{
@@ -24,9 +119,35 @@
   justify-content: center;
   align-content: center;
   text-align: center;
+
+  .ui.medium.header{
+    color: var(--white);
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  ul li::before {
+    content: "\2022";
+    color: var(--blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+
+  li{
+    margin-bottom: 4px;
+  }
+}
+
+.username{
+  color: var(--white);
 }
 
 .skill-profile{
+  padding-left: 5%;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -37,17 +158,60 @@
   display: flex;
   flex-flow: row wrap;
 
+
   li{
+    max-height: 300px;
+    max-width: 300px;
+    --border-color: var(--white);
     display: inline-block;
     margin: 20px;
-    padding: 10px 30px;
-    background: lightskyblue;
-    border-radius: 50px;
+    padding: 5px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 30px;
+    color: var(--border-color);
+    box-shadow: 0 0 5px  var(--border-color);
+    transition: all .5s ease-out;
+
+    &:hover{
+      background: radial-gradient( var(--radient), transparent);
+      color: var(--white);
+      transform: scale(1.1, 1.1);
+      cursor: pointer;
+    }
   }
 }
 
 .contacts{
   text-align: left;
+}
+
+.division{
+  position: relative;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+.edit-btn{
+  background: #191c22;
+  border-radius: 5px;
+  padding: 4px 12px;
+  color: var(--white);
+  position: absolute;
+  top: 0;
+  left: 100%;
+  border: 1px solid #2a2d33;
+
+  &:hover{
+    color: var(--white);
+    background: #24292e;
+    border-color: #6e7882;
+  }
+}
+
+.skill-profile{
+  .edit-btn{
+    left: 90%;
+  }
 }
 
 .profile-img{
@@ -94,3 +258,17 @@
     padding: 6px 12px;
   }
 }
+
+.sign-in-wrapper{
+  display: grid;
+  place-items: center;
+  height: 85vh;
+}
+
+.sign-in-box{
+
+  .ui.input{
+    width: 20vw;
+  }
+}
+

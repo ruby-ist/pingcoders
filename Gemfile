@@ -79,3 +79,5 @@ gem "net-http", "~> 0.2.2"
 
 gem "httparty", "~> 0.20.0"
 gem "yaml", "~> 0.2.0"
+
+gem "json", "~> 2.6"

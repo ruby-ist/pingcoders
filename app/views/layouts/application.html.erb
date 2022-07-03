@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Pingcoders</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-	<%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
 
-  <body>
-	  <p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+<head>
+	<title>Pingcoders</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	<%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css" %>
+	<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tsparticles-engine"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tsparticles/tsparticles.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-particles"></script>
+	<%= javascript_importmap_tags %>
+</head>
+
+<body>
+<header class="navbar">
+	<h2>Pingcoders</h2>
+	<div class="session-btn">
+		<%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "ui negative button" if user_signed_in? %>
+		<%= button_to "Sign In", new_user_session_path, method: :get, class: "ui positive button" unless user_signed_in? %>
+	</div>
+</header>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+</body>
 </html>

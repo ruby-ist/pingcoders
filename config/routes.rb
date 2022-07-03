@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     get "find/:type", to: "profiles#find"
     post "language", to: "profiles#language", as: "language"
     post "skill", to: "profiles#skill", as: "skill"
+    get "colors", to: "profiles#colors", as: "colors"
 end

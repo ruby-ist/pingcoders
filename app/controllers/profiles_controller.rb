@@ -1,12 +1,15 @@
 class ProfilesController < ApplicationController
     include ProfilesHelper
 
+    before_action :authenticate_user!, except: [:show]
+
     def initialize
         super
         @stack = StackExchange.new
     end
 
     def index
+        redirect_to profile_path(current_user.id)
     end
 
     def show
@@ -58,6 +61,11 @@ class ProfilesController < ApplicationController
         skill = Skill.find_or_create_by(name: name)
         user.skills << skill
         redirect_to edit_profile_path(user.id)
+    end
+
+    def colors
+        file = File.open(Rails.root + "lib/assets/colors.json")
+        render json: JSON.load(file)
     end
 
 end

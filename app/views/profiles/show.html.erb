@@ -1,66 +1,87 @@
 <div class="ui two column divided grid main">
 	<div class="five wide column">
-		<div class="user-profile">
-			<img class="ui circular image profile-img" src="https://i.pinimg.com/originals/7a/62/d6/7a62d6eb16a01f07bd7cddd5166536b9.jpg">
-			<p class="ui large header"><%= @user.name %></p>
-			<br/>
-			<hr/>
-			<br/>
-			<div class="contacts">
-				<div class="ui large header">Contact:</div>
-				<%= turbo_frame_tag "email" do %>
-					<div class="ui medium header">Emails:</div>
-					<ul>
-						<% @user.emails.each do |mail| %>
-							<li><%= mail.email %></li>
-						<% end %>
-					</ul>
-					<%= link_to "edit", edit_profile_path(current_user.id) if @user == current_user %>
-				<% end %>
-				<%= turbo_frame_tag "number" do %>
-					<div class="ui medium header">Mobile:</div>
-					<ul>
-						<% @user.numbers.each do |number| %>
-							<li><%= number.number %></li>
-						<% end %>
-					</ul>
-					<%= link_to "edit", edit_profile_path(current_user.id) if @user == current_user %>
-				<% end %>
-				<%= turbo_frame_tag "address" do %>
-					<div class="ui medium header">Address:</div>
-					<ul>
-						<% @user.addresses.each do |address| %>
-							<li><%= address.address %></li>
-						<% end %>
-					</ul>
-					<%= link_to "edit", edit_profile_path(current_user.id) if @user == current_user %>
-				<% end %>
+		<div class="vertical-line"></div>
+		<div class="section" data-controller="particles">
+			<div id="tsparticles"></div>
+			<div class="user-profile">
+				<img class="ui circular image profile-img" src="https://i.pinimg.com/originals/7a/62/d6/7a62d6eb16a01f07bd7cddd5166536b9.jpg">
+				<p class="ui large header"><span class="username"><%= @user.name %></span></p>
+				<br/>
+				<hr/>
+				<br/>
+				<div class="contacts">
+					<div class="ui large header">Contact:</div>
+					<%= turbo_frame_tag "email" do %>
+						<div class="division">
+							<div class="ui medium header">Emails:</div>
+							<ul>
+								<% @user.emails.each do |mail| %>
+									<li><%= mail.email %></li>
+								<% end %>
+							</ul>
+							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<div class="horizontal-line"></div>
+						</div>
+					<% end %>
+					<%= turbo_frame_tag "number" do %>
+						<div class="division">
+							<div class="ui medium header">Mobile:</div>
+							<ul>
+								<% @user.numbers.each do |number| %>
+									<li><%= number.number %></li>
+								<% end %>
+							</ul>
+							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<div class="horizontal-line"></div>
+						</div>
+					<% end %>
+					<%= turbo_frame_tag "address" do %>
+						<div class="division">
+							<div class="ui medium header">Address:</div>
+							<ul>
+								<% @user.addresses.each do |address| %>
+									<li><%= address.address %></li>
+								<% end %>
+							</ul>
+							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+						</div>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="eleven wide column skill-profile">
-		<div class="skill-profile">
-			<div class="row">
-				<%= turbo_frame_tag "language" do %>
-					<div class="ui large header">Language Proficency:</div>
-					<ul class="round-boxes">
-						<% @user.languages.each do |language| %>
-							<li><%= language.name %></li>
-						<% end %>
-					</ul>
-					<%= link_to "edit", edit_profile_path(current_user.id) if @user == current_user %>
-				<% end %>
-			</div>
-			<div class="row">
-				<%= turbo_frame_tag "skill" do %>
-					<div class="ui large header">Skills:</div>
-					<ul class="round-boxes">
-						<% @user.skills.each do |skill| %>
-							<li><%= skill.name %></li>
-						<% end %>
-					</ul>
-					<%= link_to "edit", edit_profile_path(current_user.id) if @user == current_user %>
-				<% end %>
+	
+	<div class="eleven wide column">
+		<div class="section">
+			<div class="skill-profile" data-controller="color">
+				<div class="row">
+					<%= turbo_frame_tag "language" do %>
+						<div class="division">
+							<div class="ui large header">Language Proficency:</div>
+							<ul class="round-boxes" data-color-target="languages">
+								<% @user.languages.each do |language| %>
+									<li><%= language.name %></li>
+								<% end %>
+							</ul>
+							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<div class="horizontal-line"></div>
+						</div>
+					<% end %>
+				</div>
+				<div class="row">
+					<%= turbo_frame_tag "skill" do %>
+						<div class="division">
+							<div class="ui large header">Skills:</div>
+							<ul class="round-boxes" data-color-target="skills">
+								<% @user.skills.each do |skill| %>
+									<li><%= skill.name %></li>
+								<% end %>
+							</ul>
+							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<div class="horizontal-line"></div>
+						</div>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
