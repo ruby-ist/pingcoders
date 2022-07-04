@@ -107,7 +107,7 @@ body{
   left: 50%;
   bottom: 0;
   height: 1px;
-  width: 110%;
+  width: 100%;
   background: #24292f;
   transform: translateX(-50%);
   z-index: 3;
@@ -147,7 +147,7 @@ body{
 }
 
 .skill-profile{
-  padding-left: 5%;
+  padding: 0 5%;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -170,18 +170,41 @@ body{
     border-radius: 30px;
     color: var(--border-color);
     box-shadow: 0 0 5px  var(--border-color);
-    transition: all .5s ease-out;
+    transition: all .7s ease-out;
 
     &:hover{
       background: radial-gradient( var(--radient), transparent);
       color: var(--white);
-      transform: scale(1.1, 1.1);
+      transform: scale(1.15, 1.15);
       cursor: pointer;
     }
   }
 }
 
+.main-profile{
+  position: relative;
+}
+
+.portfolio-link{
+  margin-bottom: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.svg-icons{
+  margin-bottom: 20px;
+
+  img{
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+}
+
 .contacts{
+  margin-top: 20px;
   text-align: left;
 }
 
@@ -272,3 +295,93 @@ body{
   }
 }
 
+.project-boxes{
+  padding: 0;
+
+  .ui.header{
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .update-time{
+    position: absolute;
+    bottom: 5px;
+    right: 10%;
+  }
+}
+
+.project{
+  position: relative;
+  padding: 30px 20px 20px;
+
+  .star-number{
+    background: #24292e;
+    border-radius: 10px;
+    margin-left: 3px;
+    padding: 0 6px;
+  }
+}
+
+.language-bar{
+  margin-top: 30px;
+  width: 300px;
+  height: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border: 1px solid #2a2d33;
+  overflow: hidden;
+
+  .lang{
+    height: 100%;
+    width: var(--lang-per);
+    background: var(--lang-color);
+  }
+
+  .lang{
+    border-left: 1px solid #2a2d33;
+    border-right: 1px solid #2a2d33;
+  }
+
+  .lang:first-child{
+    border-left: none;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .lang:last-child{
+    border-right: none;
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+.lang-list{
+  width: 50%;
+
+  li{
+    color: var(--white);
+    display: inline-block;
+    margin: 5px 20px;
+  }
+
+  li::before {
+    content: "\2022";
+    color: var(--lang-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+
+  span{
+    color: #79828c;
+  }
+}
+
+.user-form{
+  text-align: left;
+
+  form{
+    min-width: 10px;
+  }
+}

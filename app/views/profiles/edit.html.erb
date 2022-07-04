@@ -53,10 +53,10 @@
 		</ul>
 		<%= form_with url: language_path, method: :post do |f| %>
 			<div class="input-wrapper">
-				<%= f.text_field "name", data: {dropdown_target: "input"}, autocomplete: "off"%>
+				<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off" %>
 				<div class="suggestion-box" data-dropdown-target="suggestion"></div>
 			</div>
-			<%= f.button "Add", class: "ui disabled primary button", data: {dropdown_target: "button"} %>
+			<%= f.button "Add", class: "ui disabled primary button", data: { dropdown_target: "button" } %>
 		<% end %>
 	</div>
 	<%= link_to "Back", profile_path(@user.id) %>
@@ -72,11 +72,98 @@
 		</ul>
 		<%= form_with url: skill_path, method: :post do |f| %>
 			<div class="input-wrapper">
-				<%= f.text_field "name", data: {dropdown_target: "input"}, autocomplete: "off"%>
+				<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off" %>
 				<div class="suggestion-box" data-dropdown-target="suggestion"></div>
 			</div>
-			<%= f.button "Add", class: "ui disabled primary button", data: {dropdown_target: "button"} %>
+			<%= f.button "Add", class: "ui disabled primary button", data: { dropdown_target: "button" } %>
 		<% end %>
 	</div>
 	<%= button_to "Back", profile_path(@user.id), class: "ui button", method: :get %>
+<% end %>
+
+<%= turbo_frame_tag "projects" do %>
+	<div class="division">
+		<div class="ui large header">Projects:</div>
+		<div data-controller="dropdown" data-dropdown-type-value="project">
+			<%= form_with url: project_path, method: :post do |f| %>
+				<div class="input-wrapper">
+					<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off" %>
+					<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+				</div>
+				<%= f.button "Add", class: "ui disabled primary button", data: { dropdown_target: "button" } %>
+			<% end %>
+		</div>
+		<div class="project-boxes">
+			<% @user.repos.reverse.each do |repo| %>
+				<div class="project" data-controller="repo" data-repo-username-value="<%= @user.github_username %>" data-repo-reponame-value="<%= repo.name %>">
+					<h2 class="ui header" data-repo-target="name"></h2>
+					<p data-repo-target="description"></p>
+					<p class="update-time" data-repo-target="updated"></p>
+					<div class="horizontal-line"></div>
+					<div data-controller="bar" data-bar-username-value="<%= @user.github_username %>" data-bar-reponame-value="<%= repo.name %>">
+						<div class="language-bar" data-bar-target="bar"></div>
+						<ul class="lang-list" data-bar-target="list"></ul>
+					</div>
+					<%= link_to edit_profile_path(current_user.id), class: "edit-btn" do %>
+						Stars <span class="star-number" data-repo-target=stars></span>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+	</div>
+<% end %>
+
+<%= turbo_frame_tag "profiles" do %>
+	<div class="main-profile">
+		<img class="ui circular image profile-img" src="<%= @user.image_url || image_url("profile-pic.jpg") %>">
+		<p class="ui large header"><span class="username"><%= @user.name %></span></p>
+		<div class="other-profiles division">
+			<div onclick="window.open('https://srira.me')" class="portfolio-link">
+				<% if @user.portfolio_url %>
+					<i class="external alternate icon"></i><%= @user.portfolio_url %>
+				<% end %>
+			</div>
+			<div class="svg-icons">
+				<%= if @user.github_username
+						image_tag "github.svg", onclick: "window.open('https://github.com/" + @user.github_username + "')"
+					end %>
+				<%= if @user.hackerrank_username
+						image_tag "hackerrank.svg", onclick: "window.open('https://hackerrank.com/" + @user.hackerrank_username + "')"
+					end %>
+				<%= if @user.stackoverflow_url
+						image_tag "stackoverflow.svg", onclick: "window.open('" + @user.stackoverflow_url + "')"
+					end %>
+				<%= if @user.linkedin_url
+						image_tag "linkedin.svg", onclick: "window.open('" + @user.linkedin_url + "')"
+					end %>
+			</div>
+			
+			<div class="user-form">
+				<%= form_with url: account_path, method: :post do |form| %>
+					<%= form.fields_for @user do |f| %>
+						<%= f.label :name %><br/>
+						<%= f.text_field :name, value: @user.name %><br/>
+						<%= f.label :profile_url %><br/>
+						<%= f.text_field :image_url, value: @user.image_url %><br/>
+						<%= f.label :github_username %><br/>
+						<%= f.text_field :github_username, value: @user.github_username %><br/>
+						<%= f.label :hackerrank_username %><br/>
+						<%= f.text_field :hackerrank_username, value: @user.hackerrank_username %><br/>
+						<%= f.label :stackoverflow_url %><br/>
+						<%= f.text_field :stackoverflow_url, value: @user.stackoverflow_url %><br/>
+						<%= f.label :linkedin_url %><br/>
+						<%= f.text_field :linkedin_url, value: @user.linkedin_url %><br/>
+						<%= f.label :portfolio_url %><br/>
+						<%= f.text_field :portfolio_url, value: @user.portfolio_url %><br/>
+						<br/>
+						<%= f.submit "save" %>
+					<% end %>
+				<% end %>
+			</div>
+			
+			<div class="horizontal-line"></div>
+		</div>
+		<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+	</div>
 <% end %>

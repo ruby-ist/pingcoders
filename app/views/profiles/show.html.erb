@@ -1,14 +1,39 @@
-<div class="ui two column divided grid main">
-	<div class="five wide column">
+<div class="ui two computer column divided grid main">
+	<div class="sixteen wide mobile five wide computer column">
 		<div class="vertical-line"></div>
 		<div class="section" data-controller="particles">
 			<div id="tsparticles"></div>
 			<div class="user-profile">
-				<img class="ui circular image profile-img" src="https://i.pinimg.com/originals/7a/62/d6/7a62d6eb16a01f07bd7cddd5166536b9.jpg">
-				<p class="ui large header"><span class="username"><%= @user.name %></span></p>
-				<br/>
-				<hr/>
-				<br/>
+				<%= turbo_frame_tag "profiles" do %>
+					<div class="main-profile">
+						<img class="ui circular image profile-img" src="<%= @user.image_url || image_url("profile-pic.jpg") %>">
+						<p class="ui large header"><span class="username"><%= @user.name %></span></p>
+						<div class="other-profiles division">
+							<div onclick="window.open('https://srira.me')" class="portfolio-link">
+								<% if @user.portfolio_url %>
+									<i class="external alternate icon"></i><%= @user.portfolio_url %>
+								<% end %>
+							</div>
+							<div class="svg-icons">
+								<%= if @user.github_username
+										image_tag "github.svg", onclick: "window.open('https://github.com/" + @user.github_username + "')"
+									end %>
+								<%= if @user.hackerrank_username
+										image_tag "hackerrank.svg", onclick: "window.open('https://hackerrank.com/" + @user.hackerrank_username + "')"
+									end %>
+								<%= if @user.stackoverflow_url
+										image_tag "stackoverflow.svg", onclick: "window.open('" + @user.stackoverflow_url + "')"
+									end %>
+								<%= if @user.linkedin_url
+										image_tag "linkedin.svg", onclick: "window.open('" + @user.linkedin_url + "')"
+									end %>
+							</div>
+							
+							<div class="horizontal-line"></div>
+						</div>
+						<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+					</div>
+				<% end %>
 				<div class="contacts">
 					<div class="ui large header">Contact:</div>
 					<%= turbo_frame_tag "email" do %>
@@ -51,7 +76,7 @@
 		</div>
 	</div>
 	
-	<div class="eleven wide column">
+	<div class="sixteen wide mobile eleven wide computer column">
 		<div class="section">
 			<div class="skill-profile" data-controller="color">
 				<div class="row">
@@ -79,6 +104,33 @@
 							</ul>
 							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
 							<div class="horizontal-line"></div>
+						</div>
+					<% end %>
+				</div>
+				<div class="row">
+					<%= turbo_frame_tag "projects" do %>
+						<div class="division">
+							<div class="ui large header">Projects:</div>
+							<div class="project-boxes">
+								<% @user.repos.reverse.each do |repo| %>
+									<div class="division">
+										<div class="project" data-controller="repo" data-repo-username-value="<%= @user.github_username %>" data-repo-reponame-value="<%= repo.name %>">
+											<h2 class="ui header" data-repo-target="name"></h2>
+											<p data-repo-target="description"></p>
+											<p class="update-time" data-repo-target="updated"></p>
+											<div class="horizontal-line"></div>
+											<div data-controller="bar" data-bar-username-value="<%= @user.github_username %>" data-bar-reponame-value="<%= repo.name %>">
+												<div class="language-bar" data-bar-target="bar"></div>
+												<ul class="lang-list" data-bar-target="list"></ul>
+											</div>
+											<%= link_to edit_profile_path(current_user.id), class: "edit-btn" do %>
+												Stars <span class="star-number" data-repo-target=stars></span>
+											<% end %>
+										</div>
+									</div>
+								<% end %>
+							</div>
+							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
 						</div>
 					<% end %>
 				</div>

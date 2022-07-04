@@ -76,6 +76,8 @@ export default class extends Controller {
 					response = await fetch(`/find/language?q=${input.value}`);
 				if (type === "skill")
 					response = await fetch(`/find/skill?q=${input.value}`);
+				if (type === "project")
+					response = await fetch(`/find/repos?q=${input.value}`);
 				
 				const data = await response.json();
 				if (data.length === 0) {

@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
     def initialize
         super
         @stack = StackExchange.new
+        @git = Github.new
     end
 
     def index
@@ -43,6 +44,13 @@ class ProfilesController < ApplicationController
         when "skill"
             data = @stack.find_skill(params[:q])
             data -= current_user.skills.map { |i| i[:name] }
+        when "repos"
+            if current_user.github_username == nil
+                render json: data
+                return
+            end
+            data = @git.find_repo(current_user.github_username, params[:q] )
+            data -= current_user.repos.map{ |i| i[:name]} #unchecked change
         end
         render json: data.first(10)
     end
@@ -66,6 +74,17 @@ class ProfilesController < ApplicationController
     def colors
         file = File.open(Rails.root + "lib/assets/colors.json")
         render json: JSON.load(file)
+    end
+
+    def project
+        user = current_user
+        name = params[:name]
+        user.repos << Repo.create(name: name)
+        redirect_to edit_profile_path(user.id)
+    end
+
+    def account
+
     end
 
 end
