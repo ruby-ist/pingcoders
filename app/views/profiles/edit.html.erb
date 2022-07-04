@@ -44,41 +44,51 @@
 <% end %>
 
 <%= turbo_frame_tag "language" do %>
-	<div data-controller="dropdown" data-dropdown-type-value="language">
-		<div class="ui large header">Language Proficency:</div>
-		<ul class="round-boxes">
-			<% @user.languages.each do |language| %>
-				<li><%= language.name %></li>
+	<div class="division" data-controller="color">
+		<div data-controller="dropdown" data-dropdown-type-value="language">
+			<div class="ui large header">Language Proficency:</div>
+			<%= form_with url: language_path, method: :post do |f| %>
+				<div class="ui action input attached-btn-input">
+					<div class="input-wrapper">
+						<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off", placeholder: "Search..." %>
+						<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+					</div>
+					<%= f.button "Add", class: "ui disabled positive button add-btn", data: { dropdown_target: "button" } %>
+				</div>
 			<% end %>
-		</ul>
-		<%= form_with url: language_path, method: :post do |f| %>
-			<div class="input-wrapper">
-				<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off" %>
-				<div class="suggestion-box" data-dropdown-target="suggestion"></div>
-			</div>
-			<%= f.button "Add", class: "ui disabled primary button", data: { dropdown_target: "button" } %>
-		<% end %>
+			<ul class="round-boxes" data-color-target="languages">
+				<% @user.languages.each do |language| %>
+					<li><%= language.name %></li>
+				<% end %>
+			</ul>
+			<%= link_to "Cancel", profile_path(current_user.id), class: "edit-btn" %>
+			<div class="horizontal-line"></div>
+		</div>
 	</div>
-	<%= link_to "Back", profile_path(@user.id) %>
 <% end %>
 
 <%= turbo_frame_tag "skill" do %>
-	<div data-controller="dropdown" data-dropdown-type-value="skill">
-		<div class="ui large header">Skills:</div>
-		<ul class="round-boxes">
-			<% @user.skills.each do |skill| %>
-				<li><%= skill.name %></li>
+	<div class="division">
+		<div data-controller="dropdown" data-dropdown-type-value="skill">
+			<div class="ui large header">Skills:</div>
+			<%= form_with url: skill_path, method: :post do |f| %>
+				<div class="ui action input attached-btn-input">
+					<div class="input-wrapper">
+						<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off", placeholder: "Search..." %>
+						<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+					</div>
+					<%= f.button "Add", class: "ui disabled positive button add-btn", data: { dropdown_target: "button" } %>
+				</div>
 			<% end %>
-		</ul>
-		<%= form_with url: skill_path, method: :post do |f| %>
-			<div class="input-wrapper">
-				<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off" %>
-				<div class="suggestion-box" data-dropdown-target="suggestion"></div>
-			</div>
-			<%= f.button "Add", class: "ui disabled primary button", data: { dropdown_target: "button" } %>
-		<% end %>
+			<ul class="round-boxes">
+				<% @user.skills.each do |skill| %>
+					<li><%= skill.name %></li>
+				<% end %>
+			</ul>
+			<%= link_to "Cancel", profile_path(current_user.id), class: "edit-btn" %>
+			<div class="horizontal-line"></div>
+		</div>
 	</div>
-	<%= button_to "Back", profile_path(@user.id), class: "ui button", method: :get %>
 <% end %>
 
 <%= turbo_frame_tag "projects" do %>
@@ -86,11 +96,15 @@
 		<div class="ui large header">Projects:</div>
 		<div data-controller="dropdown" data-dropdown-type-value="project">
 			<%= form_with url: project_path, method: :post do |f| %>
-				<div class="input-wrapper">
-					<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off" %>
-					<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+				<div class="ui action input attached-btn-input">
+					<div class="ui action input attached-btn-input">
+					<div class="input-wrapper">
+						<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off", placeholder: "Find your repo..." %>
+						<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+					</div>
+					<%= f.button "Add", class: "ui disabled positive button add-btn", data: { dropdown_target: "button" } %>
+					</div>
 				</div>
-				<%= f.button "Add", class: "ui disabled primary button", data: { dropdown_target: "button" } %>
 			<% end %>
 		</div>
 		<div class="project-boxes">
@@ -110,7 +124,8 @@
 				</div>
 			<% end %>
 		</div>
-		<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+		<%= link_to "Cancel", profile_path(current_user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
 	</div>
 <% end %>
 

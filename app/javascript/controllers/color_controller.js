@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller{
-  static targets = ["languages", "skills"]
+  static targets = ["languages"]
   
   async connect() {
     const response = await fetch("/colors");

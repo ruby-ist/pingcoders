@@ -78,10 +78,10 @@
 	
 	<div class="sixteen wide mobile eleven wide computer column">
 		<div class="section">
-			<div class="skill-profile" data-controller="color">
+			<div class="skill-profile">
 				<div class="row">
 					<%= turbo_frame_tag "language" do %>
-						<div class="division">
+						<div class="division" data-controller="color">
 							<div class="ui large header">Language Proficency:</div>
 							<ul class="round-boxes" data-color-target="languages">
 								<% @user.languages.each do |language| %>
@@ -97,7 +97,7 @@
 					<%= turbo_frame_tag "skill" do %>
 						<div class="division">
 							<div class="ui large header">Skills:</div>
-							<ul class="round-boxes" data-color-target="skills">
+							<ul class="round-boxes">
 								<% @user.skills.each do |skill| %>
 									<li><%= skill.name %></li>
 								<% end %>
