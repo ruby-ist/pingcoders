@@ -1,46 +1,67 @@
 <%= turbo_frame_tag "email" do %>
-	<div class="ui medium header">Emails:</div>
-	<ul>
-		<% @user.emails.each do |mail| %>
-			<li><%= mail.email %></li>
-		<% end %>
-		<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
-			<%= f.hidden_field "attribute", value: "email" %>
-			<%= f.text_field "email" %>
-			<br/>
-			<%= f.button "save" %>  <%= link_to "Back", profile_path(@user.id) %>
-		<% end %>
-	</ul>
+	<div class="division">
+		<div class="ui medium header">Emails:</div>
+		<ul>
+			<% @user.emails.each do |mail| %>
+				<li><%= mail.email %></li>
+			<% end %>
+			<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+				<%= f.hidden_field "attribute", value: "email" %>
+				<div class="lined-input">
+					<%= f.text_field "email", placeholder: "Email", autocomplete: "off" %>
+					<%= f.button class: "ui icon blue button" do %>
+						<i class="save icon"></i>
+					<% end %>
+				</div>
+			<% end %>
+		</ul>
+		<%= link_to "cancel", profile_path(@user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
+	</div>
 <% end %>
 
 <%= turbo_frame_tag "number" do %>
-	<div class="ui medium header">Mobile:</div>
-	<ul>
-		<% @user.numbers.each do |number| %>
-			<li><%= number.number %></li>
-		<% end %>
-		<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
-			<%= f.hidden_field "attribute", value: "number" %>
-			<%= f.text_field "number" %>
-			<br/>
-			<%= f.button "save" %>  <%= link_to "Back", profile_path(@user.id) %>
-		<% end %>
-	</ul>
+	<div class="division">
+		<div class="ui medium header">Mobile:</div>
+		<ul>
+			<% @user.numbers.each do |number| %>
+				<li><%= number.number %></li>
+			<% end %>
+			<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+				<%= f.hidden_field "attribute", value: "number" %>
+				<div class="lined-input">
+					<%= f.text_field "number", placeholder: "Phone number" %>
+					<%= f.button class: "ui icon blue button" do %>
+						<i class="save icon"></i>
+					<% end %>
+				</div>
+			<% end %>
+		</ul>
+		<%= link_to "cancel", profile_path(@user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
+	</div>
 <% end %>
 
 <%= turbo_frame_tag "address" do %>
-	<div class="ui medium header">Address:</div>
-	<ul>
-		<% @user.addresses.each do |address| %>
-			<li><%= address.address %></li>
-		<% end %>
-		<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
-			<%= f.hidden_field "attribute", value: "number" %>
-			<%= f.text_area "address" %>
-			<br/>
-			<%= f.button "save" %>  <%= link_to "Back", profile_path(@user.id) %>
-		<% end %>
-	</ul>
+	<div class="division">
+		<div class="ui medium header">Address:</div>
+		<ul>
+			<% @user.addresses.each do |address| %>
+				<li><%= address.address %></li>
+			<% end %>
+			<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+				<%= f.hidden_field "attribute", value: "number" %>
+				<div class="lined-input">
+					<%= f.text_area "address", placeholder: "Address" %>
+					<%= f.button class: "ui icon blue button" do %>
+						<i class="save icon"></i>
+					<% end %>
+				</div>
+			<% end %>
+		</ul>
+		<%= link_to "cancel", profile_path(@user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
+	</div>
 <% end %>
 
 <%= turbo_frame_tag "language" do %>
@@ -98,11 +119,11 @@
 			<%= form_with url: project_path, method: :post do |f| %>
 				<div class="ui action input attached-btn-input">
 					<div class="ui action input attached-btn-input">
-					<div class="input-wrapper">
-						<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off", placeholder: "Find your repo..." %>
-						<div class="suggestion-box" data-dropdown-target="suggestion"></div>
-					</div>
-					<%= f.button "Add", class: "ui disabled positive button add-btn", data: { dropdown_target: "button" } %>
+						<div class="input-wrapper">
+							<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off", placeholder: "Find your repo..." %>
+							<div class="suggestion-box" data-dropdown-target="suggestion"></div>
+						</div>
+						<%= f.button "Add", class: "ui disabled positive button add-btn", data: { dropdown_target: "button" } %>
 					</div>
 				</div>
 			<% end %>
@@ -156,29 +177,30 @@
 			
 			<div class="user-form">
 				<%= form_with url: account_path, method: :post do |form| %>
-					<%= form.fields_for @user do |f| %>
-						<%= f.label :name %><br/>
-						<%= f.text_field :name, value: @user.name %><br/>
-						<%= f.label :profile_url %><br/>
-						<%= f.text_field :image_url, value: @user.image_url %><br/>
-						<%= f.label :github_username %><br/>
-						<%= f.text_field :github_username, value: @user.github_username %><br/>
-						<%= f.label :hackerrank_username %><br/>
-						<%= f.text_field :hackerrank_username, value: @user.hackerrank_username %><br/>
-						<%= f.label :stackoverflow_url %><br/>
-						<%= f.text_field :stackoverflow_url, value: @user.stackoverflow_url %><br/>
-						<%= f.label :linkedin_url %><br/>
-						<%= f.text_field :linkedin_url, value: @user.linkedin_url %><br/>
-						<%= f.label :portfolio_url %><br/>
-						<%= f.text_field :portfolio_url, value: @user.portfolio_url %><br/>
-						<br/>
-						<%= f.submit "save" %>
-					<% end %>
+					<div class="form-inputs">
+						<%= form.fields_for @user do |f| %>
+							<%= f.text_field :name, value: @user.name, placeholder: "Name", autocomplete: "off" %><br/>
+							<%= f.text_field :image_url, value: @user.image_url, placeholder: "Profile picture url", autocomplete: "off" %>
+							<br/>
+							<%= f.text_field :github_username, value: @user.github_username, placeholder: "Github Username", autocomplete: "off" %>
+							<br/>
+							<%= f.text_field :hackerrank_username, value: @user.hackerrank_username, placeholder: "Hackerrank Username", autocomplete: "off" %>
+							<br/>
+							<%= f.text_field :stackoverflow_url, value: @user.stackoverflow_url, placeholder: "Stackoverflow Profile Url", autocomplete: "off" %>
+							<br/>
+							<%= f.text_field :linkedin_url, value: @user.linkedin_url, placeholder: "Linkedin Profile url", autocomplete: "off" %>
+							<br/>
+							<%= f.text_field :portfolio_url, value: @user.portfolio_url, placeholder: "Your portfolio link", autocomplete: "off" %>
+							<br/>
+							<br/>
+							<%= f.submit "save" %>
+						<% end %>
+					</div>
 				<% end %>
 			</div>
 			
 			<div class="horizontal-line"></div>
 		</div>
-		<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+		<%= link_to "cancel", profile_path(@user.id), class: "edit-btn" %>
 	</div>
 <% end %>

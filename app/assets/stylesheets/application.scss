@@ -57,7 +57,6 @@ body {
 }
 
 .main {
-  height: 86vh;
 
   .five.wide.column {
     padding: 0;
@@ -428,5 +427,56 @@ body {
 
   .add-btn{
     border-radius: 0 10px 10px 0 !important;
+  }
+}
+
+.lined-input{
+  display: flex;
+  flex-direction: row;
+
+  textarea{
+    background: transparent;
+    border: 1px solid var(--blue);
+    color: var(--white);
+
+    &:focus{
+      outline: none;
+    }
+  }
+
+  input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--blue);
+    color: var(--white);
+    padding: 6px 0;
+
+    &:focus{
+      outline: none;
+    }
+  }
+
+  .ui.icon.button{
+    height: 25px;
+    width: 25px;
+    padding: 1px !important;
+    margin-left: 5px;
+  }
+}
+
+.form-inputs{
+  input{
+    width: 100%;
+    background: transparent;
+    border: 2px solid var(--dark-grey);
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 4px 10px;
+    color: var(--white);
+
+    &:focus{
+      outline: none;
+      border-color: var(--blue);
+    }
   }
 }
