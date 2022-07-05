@@ -1,4 +1,6 @@
 import {Controller} from "@hotwired/stimulus"
+import "jquery-particles"
+import "tsparticles-engine"
 
 export default class extends Controller {
 	async connect() {
