@@ -125,6 +125,11 @@ body {
   align-content: center;
   text-align: center;
 
+  #address{
+    width: 20vw;
+    word-wrap: break-word;
+  }
+
   .ui.medium.header {
     color: var(--white);
   }
@@ -255,8 +260,47 @@ body {
 
 .sign-in-box {
 
-  .ui.input {
-    width: 20vw;
+  .segment{
+    color: var(--white);
+    background: var(--medium-black);
+  }
+
+  .sign-in-input {
+    input {
+      width: 20vw;
+      background: var(--dark-grey);
+      border: 1px solid var(--main-background);
+      border-radius: 5px;
+      height: 40px;
+      padding: 5px 10px;
+      margin-top: 4px;
+      color: var(--white);
+
+      &:focus {
+        outline: none;
+        border-color: var(--blue);
+      }
+    }
+
+  }
+
+  .ui.checkbox.field{
+    input{
+      background: var(--dark-grey) !important;
+    }
+
+    label {
+      color: var(--white);
+    }
+  }
+
+  .ui.secondary.segment{
+    background: var(--dark-grey);
+  }
+
+  .reset-btn{
+    text-align: center;
+    margin-top: 10px;
   }
 }
 

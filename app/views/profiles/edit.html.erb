@@ -50,7 +50,7 @@
 				<li><%= address.address %></li>
 			<% end %>
 			<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
-				<%= f.hidden_field "attribute", value: "number" %>
+				<%= f.hidden_field "attribute", value: "address" %>
 				<div class="lined-input">
 					<%= f.text_area "address", placeholder: "Address" %>
 					<%= f.button class: "ui icon blue button" do %>

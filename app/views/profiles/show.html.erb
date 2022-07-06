@@ -61,7 +61,7 @@
 						</div>
 					<% end %>
 					<%= turbo_frame_tag "address" do %>
-						<div class="division">
+						<div class="division" id="address">
 							<div class="ui medium header">Address:</div>
 							<ul>
 								<% @user.addresses.each do |address| %>
