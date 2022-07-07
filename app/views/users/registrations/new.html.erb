@@ -6,7 +6,6 @@
 			<br/>
 			
 			<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-				<%= render "users/shared/error_messages", resource: resource %>
 				
 				<div class="field">
 					<%= f.label :email %><br/>
@@ -16,9 +15,6 @@
 				
 				<div class="field">
 					<%= f.label :password %>
-					<% if @minimum_password_length %>
-						<em>(<%= @minimum_password_length %> characters minimum)</em>
-					<% end %><br/>
 					<div class="sign-in-input"><%= f.password_field :password, autocomplete: "new-password" %></div>
 				</div>
 				<br/>
@@ -28,6 +24,7 @@
 					<div class="sign-in-input"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
 				</div>
 				<br/>
+				<%= render "users/shared/error_messages", resource: resource %>
 				<br/>
 				
 				<div class="actions">

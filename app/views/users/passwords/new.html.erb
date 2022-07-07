@@ -6,13 +6,14 @@
 			<br/>
 			
 			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-				<%= render "users/shared/error_messages", resource: resource %>
 				
 				<div class="field">
 					<%= f.label :email %><br/>
 					<div class="sign-in-input"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
 				</div>
-				
+				<br/>
+				<%= render "users/shared/error_messages", resource: resource %>
+				<br/>
 				<div class="actions reset-btn">
 					<%= f.submit "Send me reset password instructions", class: "ui primary button" %>
 				</div>

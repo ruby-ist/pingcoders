@@ -35,6 +35,10 @@ body {
   }
 }
 
+.ui.sticky{
+  position: relative;
+}
+
 .navbar {
   height: 10vh;
   display: flex;
@@ -255,7 +259,7 @@ body {
 .sign-in-wrapper {
   display: grid;
   place-items: center;
-  height: 85vh;
+  padding: 10vh;
 }
 
 .sign-in-box {
@@ -284,10 +288,7 @@ body {
 
   }
 
-  .ui.checkbox.field{
-    input{
-      background: var(--dark-grey) !important;
-    }
+  .ui.field{
 
     label {
       color: var(--white);
@@ -300,7 +301,14 @@ body {
 
   .reset-btn{
     text-align: center;
-    margin-top: 10px;
+  }
+
+  .oauth-btn{
+    text-align: center;
+
+    button{
+      width: 70%;
+    }
   }
 }
 
