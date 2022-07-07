@@ -57,6 +57,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
+  gem "figaro"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -83,3 +84,8 @@ gem "yaml", "~> 0.2.0"
 gem "json", "~> 2.6"
 
 gem "fomantic-ui-sass", "~> 2.8"
+
+gem "omniauth-google-oauth2", "~> 1.0"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "omniauth-github", "~> 2.0"

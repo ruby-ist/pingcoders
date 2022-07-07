@@ -80,9 +80,9 @@ export default class extends Controller {
 			if (input.value !== "") {
 				let response;
 				if (type === "language")
-					response = await fetch(`/find/language?q=${input.value}`);
+					response = await fetch(`/find/language?q=${encodeURIComponent(input.value)}`);
 				if (type === "skill")
-					response = await fetch(`/find/skill?q=${input.value}`);
+					response = await fetch(`/find/skill?q=${encodeURIComponent(input.value)}`);
 				if (type === "project")
 					response = await fetch(`/find/repos?q=${input.value}`);
 				
