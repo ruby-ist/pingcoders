@@ -5,7 +5,7 @@
 			<% @user.emails.each do |mail| %>
 				<li><%= mail.email %></li>
 			<% end %>
-			<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+			<%= form_with url: profile_emails_path(@user.id), method: :post do |f| %>
 				<%= f.hidden_field "attribute", value: "email" %>
 				<div class="lined-input">
 					<%= f.text_field "email", placeholder: "Email", autocomplete: "off" %>
@@ -27,7 +27,7 @@
 			<% @user.numbers.each do |number| %>
 				<li><%= number.number %></li>
 			<% end %>
-			<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+			<%= form_with url: profile_numbers_path(@user.id), method: :post do |f| %>
 				<%= f.hidden_field "attribute", value: "number" %>
 				<div class="lined-input">
 					<%= f.text_field "number", placeholder: "Phone number" %>
@@ -43,13 +43,13 @@
 <% end %>
 
 <%= turbo_frame_tag "address" do %>
-	<div class="division">
+	<div class="division" id="address">
 		<div class="ui medium header">Address:</div>
 		<ul>
 			<% @user.addresses.each do |address| %>
 				<li><%= address.address %></li>
 			<% end %>
-			<%= form_with url: profile_path(@user.id), method: :patch do |f| %>
+			<%= form_with url: profile_addresses_path(@user.id), method: :post do |f| %>
 				<%= f.hidden_field "attribute", value: "address" %>
 				<div class="lined-input">
 					<%= f.text_area "address", placeholder: "Address" %>
@@ -68,7 +68,7 @@
 	<div class="division" data-controller="color">
 		<div data-controller="dropdown" data-dropdown-type-value="language">
 			<div class="ui large header">Language Proficency:</div>
-			<%= form_with url: language_path, method: :post do |f| %>
+			<%= form_with url: languages_path, method: :post do |f| %>
 				<div class="ui action input attached-btn-input">
 					<div class="input-wrapper">
 						<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off", placeholder: "Search..." %>
@@ -92,7 +92,7 @@
 	<div class="division">
 		<div data-controller="dropdown" data-dropdown-type-value="skill">
 			<div class="ui large header">Skills:</div>
-			<%= form_with url: skill_path, method: :post do |f| %>
+			<%= form_with url: skills_path, method: :post do |f| %>
 				<div class="ui action input attached-btn-input">
 					<div class="input-wrapper">
 						<%= f.text_field "name", data: { dropdown_target: "input" }, autocomplete: "off", placeholder: "Search..." %>
@@ -116,7 +116,7 @@
 	<div class="division">
 		<div class="ui large header">Projects:</div>
 		<div data-controller="dropdown" data-dropdown-type-value="project">
-			<%= form_with url: project_path, method: :post do |f| %>
+			<%= form_with url: repos_path, method: :post do |f| %>
 				<div class="ui action input attached-btn-input">
 					<div class="ui action input attached-btn-input">
 						<div class="input-wrapper">
@@ -176,7 +176,7 @@
 			</div>
 			
 			<div class="user-form">
-				<%= form_with url: account_path, method: :post do |form| %>
+				<%= form_with url: profile_path(@user.id), method: :patch do |form| %>
 					<div class="form-inputs">
 						<%= form.fields_for @user do |f| %>
 							<%= f.text_field :name, value: @user.name, placeholder: "Name", autocomplete: "off" %><br/>
