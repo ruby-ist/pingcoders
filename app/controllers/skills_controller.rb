@@ -21,4 +21,10 @@ class SkillsController < ApplicationController
         user.skills << skill
         redirect_to edit_profile_path(user.id)
     end
+
+    def destroy
+        skill = SkillSet.find_by(user_id: params[:profile_id], skill_id: params[:id])
+        skill.destroy
+        redirect_to edit_profile_path(params[:profile_id]), status: :see_other
+    end
 end

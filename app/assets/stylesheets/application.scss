@@ -186,12 +186,47 @@ body {
     color: var(--text-color);
     box-shadow: 0 0 5px var(--border-color);
     transition: all .7s ease-out;
+    position: relative;
 
     &:hover {
       background: radial-gradient(var(--radient), transparent);
       color: var(--white);
       transform: scale(1.15, 1.15);
       cursor: pointer;
+
+      &.expanded{
+        padding-right: 40px;
+        transition: padding-right .7s;
+      }
+
+      .close-icon{
+        display: block;
+        color: var(--white);
+        background: radial-gradient( #79828c, transparent);
+      }
+    }
+
+    .close-icon{
+      display: none;
+      position: absolute;
+      right: 1px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      padding: 4px;
+      border-radius: 50%;
+
+      a{
+        color: var(--white);
+
+        &:hover{
+          color: var(--white);
+        }
+      }
+
+      i.close.icon{
+        margin-right: 0;
+      }
     }
   }
 }

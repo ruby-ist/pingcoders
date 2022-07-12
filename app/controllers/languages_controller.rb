@@ -21,4 +21,10 @@ class LanguagesController < ApplicationController
         user.languages << language
         redirect_to edit_profile_path(user.id)
     end
+
+    def destroy
+        language = KnownLanguage.find_by(user_id: params[:profile_id], language_id: params[:id])
+        language.destroy
+        redirect_to edit_profile_path(params[:profile_id]), status: :see_other
+    end
 end

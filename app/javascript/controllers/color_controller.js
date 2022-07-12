@@ -10,7 +10,8 @@ export default class extends Controller{
     
     let languages = this.languagesTarget.children;
     for(let i=0; i<languages.length; i++){
-      let color = data[languages[i].innerHTML];
+      let language = languages[i].children;
+      let color = data[language[0].innerHTML];
       if( color !== undefined) {
         if( tinycolor(color["color"]).getBrightness() > 45 )
           languages[i].setAttribute("style", `--border-color: ${color["color"]}; --radient: ${color["color"]}; --text-color: ${color["color"]}`);

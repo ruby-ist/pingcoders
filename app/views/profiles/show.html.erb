@@ -85,7 +85,9 @@
 							<div class="ui large header">Language Proficency:</div>
 							<ul class="round-boxes" data-color-target="languages">
 								<% @user.languages.each do |language| %>
-									<li><%= language.name %></li>
+									<li>
+										<span><%= language.name %></span>
+									</li>
 								<% end %>
 							</ul>
 							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
@@ -99,7 +101,9 @@
 							<div class="ui large header">Skills:</div>
 							<ul class="round-boxes">
 								<% @user.skills.each do |skill| %>
-									<li><%= skill.name %></li>
+									<li>
+										<span><%= skill.name %></span>
+									</li>
 								<% end %>
 							</ul>
 							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>

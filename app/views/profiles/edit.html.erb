@@ -1,8 +1,7 @@
-
 <%= turbo_frame_tag "language" do %>
 	<div class="division" data-controller="color">
 		<div data-controller="dropdown" data-dropdown-type-value="language">
-			<div class="ui large header">Language Proficency:</div>
+			<div class="ui large header">Language Proficiency:</div>
 			<%= form_with url: languages_path, method: :post do |f| %>
 				<div class="ui action input attached-btn-input">
 					<div class="input-wrapper">
@@ -14,10 +13,17 @@
 			<% end %>
 			<ul class="round-boxes" data-color-target="languages">
 				<% @user.languages.each do |language| %>
-					<li><%= language.name %></li>
+					<li class="expanded">
+						<span><%= language.name %></span>
+						<span class="close-icon">
+							<%= link_to profile_language_path(@user.id, language.id), data: {turbo_method: :delete} do %>
+								<i class="close icon"></i>
+							<% end %>
+						</span>
+					</li>
 				<% end %>
 			</ul>
-			<%= link_to "Cancel", profile_path(current_user.id), class: "edit-btn" %>
+			<%= link_to "back", profile_path(current_user.id), class: "edit-btn" %>
 			<div class="horizontal-line"></div>
 		</div>
 	</div>
@@ -38,10 +44,17 @@
 			<% end %>
 			<ul class="round-boxes">
 				<% @user.skills.each do |skill| %>
-					<li><%= skill.name %></li>
+					<li class="expanded">
+						<span><%= skill.name %></span>
+						<span class="close-icon">
+							<%= link_to profile_skill_path(@user.id, skill.id), data: {turbo_method: :delete} do %>
+								<i class="close icon"></i>
+							<% end %>
+						</span>
+					</li>
 				<% end %>
 			</ul>
-			<%= link_to "Cancel", profile_path(current_user.id), class: "edit-btn" %>
+			<%= link_to "back", profile_path(current_user.id), class: "edit-btn" %>
 			<div class="horizontal-line"></div>
 		</div>
 	</div>
@@ -80,7 +93,7 @@
 				</div>
 			<% end %>
 		</div>
-		<%= link_to "Cancel", profile_path(current_user.id), class: "edit-btn" %>
+		<%= link_to "back", profile_path(current_user.id), class: "edit-btn" %>
 		<div class="horizontal-line"></div>
 	</div>
 <% end %>
@@ -136,6 +149,6 @@
 			
 			<div class="horizontal-line"></div>
 		</div>
-		<%= link_to "cancel", profile_path(@user.id), class: "edit-btn" %>
+		<%= link_to "back", profile_path(@user.id), class: "edit-btn" %>
 	</div>
 <% end %>
