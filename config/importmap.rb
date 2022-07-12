@@ -11,3 +11,4 @@ pin "tsparticles", to: "https://cdn.jsdelivr.net/npm/tsparticles/tsparticles.bun
 pin "jquery-particles", to: "https://cdn.jsdelivr.net/npm/jquery-particles"
 pin "fomantic-ui", to: "semantic-ui.js"
 pin "fomantic-ui/toast", to: "semantic-ui/toast" # add files in manifest.js first and give different name here
+pin "tinycolor2", to: "https://ga.jspm.io/npm:tinycolor2@1.4.2/tinycolor.js"

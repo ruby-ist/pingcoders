@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import tinycolor from "tinycolor2"
 
 export default class extends Controller{
   static targets = ["languages"]
@@ -11,7 +12,10 @@ export default class extends Controller{
     for(let i=0; i<languages.length; i++){
       let color = data[languages[i].innerHTML];
       if( color !== undefined) {
-        languages[i].setAttribute("style", `--border-color: ${color["color"]}; --radient: ${color["color"]}`);
+        if( tinycolor(color["color"]).getBrightness() > 45 )
+          languages[i].setAttribute("style", `--border-color: ${color["color"]}; --radient: ${color["color"]}; --text-color: ${color["color"]}`);
+        else
+          languages[i].setAttribute("style", `--border-color: ${color["color"]}; --radient: ${color["color"]};`);
       }
     }
   }

@@ -177,12 +177,13 @@ body {
     max-height: 300px;
     max-width: 300px;
     --border-color: var(--white);
+    --text-color: #79828c;
     display: inline-block;
     margin: 20px;
     padding: 5px 20px;
     border: 2px solid var(--border-color);
     border-radius: 30px;
-    color: var(--border-color);
+    color: var(--text-color);
     box-shadow: 0 0 5px var(--border-color);
     transition: all .7s ease-out;
 
