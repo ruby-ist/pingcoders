@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "email" do %>
+	<div class="division">
+		<div class="ui medium header">Emails:</div>
+		<ul>
+			<%= render partial: "emails/index" %>
+			<%= form_with url: profile_emails_path(@user.id), method: :post do |f| %>
+				<div class="lined-input">
+					<%= f.text_field "email", placeholder: "Email", autocomplete: "off", required: true %>
+					<%= f.button class: "ui icon blue button" do %>
+						<i class="save icon"></i>
+					<% end %>
+				</div>
+			<% end %>
+		</ul>
+		<%= link_to "back", profile_path(@user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
+	</div>
+<% end %>

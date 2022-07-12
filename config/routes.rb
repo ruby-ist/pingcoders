@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
     root "profiles#index"
     resources :profiles, only: [:index, :show, :edit, :update] do
-        resources :addresses, only: [:create]
-        resources :numbers, only: [:create]
-        resources :emails, only: [:create]
+        resources :emails, except: [:index, :show]
+        resources :numbers, except: [:index, :show]
+        resources :addresses, except: [:index, :show]
     end
 
     resources :languages, only: [:index, :create]

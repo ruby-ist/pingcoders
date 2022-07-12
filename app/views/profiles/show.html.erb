@@ -44,7 +44,7 @@
 									<li><%= mail.email %></li>
 								<% end %>
 							</ul>
-							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<%= link_to "edit", new_profile_email_path(current_user.id), class: "edit-btn" if @user == current_user %>
 							<div class="horizontal-line"></div>
 						</div>
 					<% end %>
@@ -56,7 +56,7 @@
 									<li><%= number.number %></li>
 								<% end %>
 							</ul>
-							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<%= link_to "edit", new_profile_number_path(current_user.id), class: "edit-btn" if @user == current_user %>
 							<div class="horizontal-line"></div>
 						</div>
 					<% end %>
@@ -68,7 +68,7 @@
 									<li><%= address.address %></li>
 								<% end %>
 							</ul>
-							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<%= link_to "edit", new_profile_address_path(current_user.id), class: "edit-btn" if @user == current_user %>
 						</div>
 					<% end %>
 				</div>

@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "number" do %>
+	<div class="division">
+		<div class="ui medium header">Mobile:</div>
+		<ul>
+			<%= render partial: "numbers/index" %>
+			<%= form_with url: profile_numbers_path(@user.id), method: :post do |f| %>
+				<div class="lined-input">
+					<%= f.text_field "number", placeholder: "Number", required: true%>
+					<%= f.button class: "ui icon blue button" do %>
+						<i class="save icon"></i>
+					<% end %>
+				</div>
+			<% end %>
+		</ul>
+		<%= link_to "back", profile_path(@user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
+	</div>
+<% end %>

@@ -1,0 +1,13 @@
+<% @user.emails.each do |mail| %>
+	<%= turbo_frame_tag dom_id(mail) do %>
+		<li>
+			<div class="inline-edit"><%= mail.email %></div>
+			<%= link_to edit_profile_email_path(@user.id, mail.id) do %>
+				<i class="edit outline blue link icon"></i>
+			<% end %>
+			<%= link_to "/profiles/#{@user.id}/emails/#{mail.id}", data: {turbo_method: :delete } do %>
+				<i class="trash alternate outline blue link icon"></i>
+			<% end %>
+		</li>
+	<% end %>
+<% end %>

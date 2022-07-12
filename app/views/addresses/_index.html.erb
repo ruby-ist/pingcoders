@@ -1,0 +1,13 @@
+<% @user.addresses.each do |address| %>
+	<%= turbo_frame_tag dom_id(address) do %>
+		<li>
+			<div class="inline-edit"><%= address.address %></div>
+			<%= link_to edit_profile_address_path(@user.id, address.id) do %>
+				<i class="edit outline blue link icon"></i>
+			<% end %>
+			<%= link_to "/profiles/#{@user.id}/addresses/#{address.id}", data: {turbo_method: :delete } do %>
+				<i class="trash alternate outline blue link icon"></i>
+			<% end %>
+		</li>
+	<% end %>
+<% end %>

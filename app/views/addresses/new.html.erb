@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "address" do %>
+	<div class="division" id="address">
+		<div class="ui medium header">Address:</div>
+		<ul>
+			<%= render partial: "addresses/index" %>
+			<%= form_with url: profile_addresses_path(@user.id), method: :post do |f| %>
+				<div class="lined-input">
+					<%= f.text_area "address", placeholder: "Address", required: true %>
+					<%= f.button class: "ui icon blue button" do %>
+						<i class="save icon"></i>
+					<% end %>
+				</div>
+			<% end %>
+		</ul>
+		<%= link_to "back", profile_path(@user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
+	</div>
+<% end %>
