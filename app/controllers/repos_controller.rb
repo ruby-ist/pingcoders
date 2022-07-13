@@ -26,4 +26,10 @@ class ReposController < ApplicationController
         redirect_to edit_profile_path(user.id)
     end
 
+    def destroy
+        repo = Repo.find(params[:id])
+        repo.destroy
+        redirect_to edit_profile_path(user.id), status: :see_other
+    end
+
 end

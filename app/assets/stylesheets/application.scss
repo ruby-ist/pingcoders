@@ -24,8 +24,9 @@ body {
   --white: #bec7d0;
   --dark-grey: #24292f;
   --medium-black: #121519;
+  --light-grey: #79828c;
   background: var(--main-background);
-  color: #79828c;
+  color: var(--light-grey);
   font-family: 'Lato', sans-serif;
 
   .ui.header {
@@ -177,7 +178,7 @@ body {
     max-height: 300px;
     max-width: 300px;
     --border-color: var(--white);
-    --text-color: #79828c;
+    --text-color: var(--light-grey);
     display: inline-block;
     margin: 20px;
     padding: 5px 20px;
@@ -202,7 +203,7 @@ body {
       .close-icon{
         display: block;
         color: var(--white);
-        background: radial-gradient( #79828c, transparent);
+        background: radial-gradient( var(--light-grey), transparent);
       }
     }
 
@@ -427,7 +428,7 @@ body {
   }
 
   span {
-    color: #79828c;
+    color: var(--light-grey);
   }
 }
 
@@ -587,4 +588,19 @@ body {
 .inline-edit{
   display: inline;
   margin-right: 10px;
+}
+
+.repo-btn{
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  cursor: pointer;
+
+  div.ui.black.label {
+    color: var(--light-grey) !important;
+  }
+}
+
+i.trash.link.icon.delete-repo{
+  margin-left: 10px;
 }

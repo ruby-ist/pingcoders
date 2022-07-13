@@ -76,25 +76,8 @@
 				</div>
 			<% end %>
 		</div>
-		<div class="project-boxes">
-			<% @user.repos.reverse.each do |repo| %>
-				<div class="project" data-controller="repo" data-repo-username-value="<%= @user.github_username %>" data-repo-reponame-value="<%= repo.name %>">
-					<h2 class="ui header" data-repo-target="name"></h2>
-					<p data-repo-target="description"></p>
-					<p class="update-time" data-repo-target="updated"></p>
-					<div class="horizontal-line"></div>
-					<div data-controller="bar" data-bar-username-value="<%= @user.github_username %>" data-bar-reponame-value="<%= repo.name %>">
-						<div class="language-bar" data-bar-target="bar"></div>
-						<ul class="lang-list" data-bar-target="list"></ul>
-					</div>
-					<%= link_to edit_profile_path(current_user.id), class: "edit-btn" do %>
-						Stars <span class="star-number" data-repo-target=stars></span>
-					<% end %>
-				</div>
-			<% end %>
-		</div>
+		<%= render partial: "repos/index", locals: {edit: true } %>
 		<%= link_to "back", profile_path(current_user.id), class: "edit-btn" %>
-		<div class="horizontal-line"></div>
 	</div>
 <% end %>
 
@@ -103,7 +86,7 @@
 		<img class="ui circular image profile-img" src="<%= @user.image_url || image_url("profile-pic.jpg") %>">
 		<p class="ui large header"><span class="username"><%= @user.name %></span></p>
 		<div class="other-profiles division">
-			<div onclick="window.open('https://srira.me')" class="portfolio-link">
+			<div onclick="window.open('<%= @user.portfolio_url %>')" class="portfolio-link">
 				<% if @user.portfolio_url %>
 					<i class="external alternate icon"></i><%= @user.portfolio_url %>
 				<% end %>

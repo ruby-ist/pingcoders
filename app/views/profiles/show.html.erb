@@ -82,7 +82,7 @@
 				<div class="row">
 					<%= turbo_frame_tag "language" do %>
 						<div class="division" data-controller="color">
-							<div class="ui large header">Language Proficency:</div>
+							<div class="ui large header">Language Proficiency:</div>
 							<ul class="round-boxes" data-color-target="languages">
 								<% @user.languages.each do |language| %>
 									<li>
@@ -115,25 +115,7 @@
 					<%= turbo_frame_tag "projects" do %>
 						<div class="division">
 							<div class="ui large header">Projects:</div>
-							<div class="project-boxes">
-								<% @user.repos.reverse.each do |repo| %>
-									<div class="division">
-										<div class="project" data-controller="repo" data-repo-username-value="<%= @user.github_username %>" data-repo-reponame-value="<%= repo.name %>">
-											<h2 class="ui header" data-repo-target="name"></h2>
-											<p data-repo-target="description"></p>
-											<p class="update-time" data-repo-target="updated"></p>
-											<div class="horizontal-line"></div>
-											<div data-controller="bar" data-bar-username-value="<%= @user.github_username %>" data-bar-reponame-value="<%= repo.name %>">
-												<div class="language-bar" data-bar-target="bar"></div>
-												<ul class="lang-list" data-bar-target="list"></ul>
-											</div>
-											<%= link_to edit_profile_path(current_user.id), class: "edit-btn" do %>
-												Stars <span class="star-number" data-repo-target=stars></span>
-											<% end %>
-										</div>
-									</div>
-								<% end %>
-							</div>
+							<%= render partial: "repos/index", locals: {edit: false } %>
 							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
 						</div>
 					<% end %>

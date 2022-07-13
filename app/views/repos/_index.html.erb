@@ -1,0 +1,40 @@
+<div class="project-boxes">
+	<% @repos.length.times do |i| %>
+		<div class="division">
+			<%= turbo_frame_tag dom_id(@repos[i]) do %>
+				<div class="project" data-controller="repo" data-repo-username-value="<%= @user.github_username %>" data-repo-reponame-value="<%= @repos[i].name %>">
+					<h2 class="ui header" data-repo-target="name"></h2>
+					<p data-repo-target="description"></p>
+					<p class="update-time" data-repo-target="updated"></p>
+					<div class="horizontal-line"></div>
+					<div data-controller="bar" data-bar-username-value="<%= @user.github_username %>" data-bar-reponame-value="<%= @repos[i].name %>">
+						<div class="language-bar" data-bar-target="bar"></div>
+						<ul class="lang-list" data-bar-target="list"></ul>
+					</div>
+					
+					<div class="repo-btn">
+						<% if @liked[i] %>
+							<%= link_to profile_repo_like_path(@user.id, @repos[i].id, @liked[i]), data: { turbo_method: :delete } do %>
+								<div class="ui black label">
+									<i class="<%= "star yellow icon" %>"></i><%= @counts[i] %>
+								</div>
+							<% end %>
+						<% else %>
+							<%= link_to profile_repo_likes_path(@user.id, @repos[i].id), data: { turbo_method: :post } do %>
+								<div class="ui black label">
+									<i class="<%= "star grey icon" %>"></i><%= @counts[i] %>
+								</div>
+							<% end %>
+						<% end %>
+						
+						<% if edit %>
+							<%= link_to repo_path(@repos[i].id), data: { turbo_method: :delete, turbo_confirm: "Do you want to delete this repo from your profile?"} do %>
+								<i class="trash link grey icon delete-repo"></i>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>

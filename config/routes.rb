@@ -9,10 +9,14 @@ Rails.application.routes.draw do
 
         resources :languages, only: [:destroy]
         resources :skills, only: [:destroy]
+
+        resources :repos, only: [] do
+            resources :likes, only: [:create, :destroy]
+        end
     end
 
+    resources :repos, only: [:index, :create, :destroy]
     resources :languages, only: [:index, :create]
     resources :skills, only: [:index, :create]
-    resources :repos, only: [:index, :create]
     resources :colors, only: [:index]
 end

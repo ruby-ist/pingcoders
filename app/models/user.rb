@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     # Include default devise modules. Others available are:
-    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+    # :confirmable, :lockable, :timeoutable, :trackable
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :github]
 
@@ -13,6 +13,7 @@ class User < ApplicationRecord
     has_many :emails, dependent: :destroy
     has_many :addresses, dependent: :destroy
     has_many :repos, dependent: :destroy
+    has_many :likes, dependent: :destroy
 
     def self.from_omniauth(auth, type)
         if type == "google"

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller{
-	static targets = ["name", "description", "updated", "stars"];
+	static targets = ["name", "description", "updated"];
 	static values = {username: String, reponame: String};
 
 	
@@ -43,14 +43,5 @@ export default class extends Controller{
 		
 		let time = timeSince(new Date(data["pushed_at"]).getTime());
 		this.updatedTarget.innerHTML = `Updated ${time} ago`;
-
-		const stars = await fetch(`https://api.github.com/repos/${this.usernameValue}/${this.reponameValue}/stargazers?per_page=100`);
-		const star_data = await stars.json();
-		const nos = star_data.length;
-		if(nos < 100 ) {
-			this.starsTarget.innerHTML = nos;
-		}
-		else
-			this.starsTarget.innerHTML = `100+`;
 	}
 }
