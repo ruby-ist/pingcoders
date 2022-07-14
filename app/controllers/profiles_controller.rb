@@ -18,8 +18,9 @@ class ProfilesController < ApplicationController
     def update
         fields = params.require(:user).permit(:name, :image_url, :github_username, :hackerrank_username, :stackoverflow_url, :linkedin_url, :portfolio_url)
         user = current_user
-        user.update(fields)
-        redirect_to profile_path(user.id)
+        if user.update(fields)
+            redirect_to profile_path(user.id)
+        end
     end
 
     private

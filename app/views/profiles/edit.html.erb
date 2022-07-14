@@ -110,17 +110,25 @@
 				<%= form_with url: profile_path(@user.id), method: :patch do |form| %>
 					<div class="form-inputs">
 						<%= form.fields_for @user do |f| %>
-							<%= f.text_field :name, value: @user.name, placeholder: "Name", autocomplete: "off" %><br/>
+							<i class="user icon"></i>
+							<%= f.text_field :name, value: @user.name, placeholder: "Name", autocomplete: "off" %>
+							<br/>
+							<i class="file image icon"></i>
 							<%= f.text_field :image_url, value: @user.image_url, placeholder: "Profile picture url", autocomplete: "off" %>
 							<br/>
+							<i class="github icon"></i>
 							<%= f.text_field :github_username, value: @user.github_username, placeholder: "Github Username", autocomplete: "off" %>
 							<br/>
+							<i class="hackerrank icon"></i>
 							<%= f.text_field :hackerrank_username, value: @user.hackerrank_username, placeholder: "Hackerrank Username", autocomplete: "off" %>
 							<br/>
+							<i class="stack overflow icon"></i>
 							<%= f.text_field :stackoverflow_url, value: @user.stackoverflow_url, placeholder: "Stackoverflow Profile Url", autocomplete: "off" %>
 							<br/>
+							<i class="linkedin icon"></i>
 							<%= f.text_field :linkedin_url, value: @user.linkedin_url, placeholder: "Linkedin Profile url", autocomplete: "off" %>
 							<br/>
+							<i class="passport icon"></i>
 							<%= f.text_field :portfolio_url, value: @user.portfolio_url, placeholder: "Your portfolio link", autocomplete: "off" %>
 							<br/>
 							<br/>

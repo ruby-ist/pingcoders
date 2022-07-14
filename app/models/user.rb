@@ -15,6 +15,16 @@ class User < ApplicationRecord
     has_many :repos, dependent: :destroy
     has_many :likes, dependent: :destroy
 
+    before_update do
+        self.name = self.name.presence
+        self.github_username = self.github_username.presence
+        self.image_url = self.image_url.presence
+        self.portfolio_url = self.portfolio_url.presence
+        self.hackerrank_username = self.hackerrank_username.presence
+        self.stackoverflow_url = self.stackoverflow_url.presence
+        self.linkedin_url = self.linkedin_url.presence
+    end
+
     def self.from_omniauth(auth, type)
         if type == "google"
           return where(email: auth.info.email).first_or_create do |user|
