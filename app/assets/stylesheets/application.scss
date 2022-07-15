@@ -60,7 +60,14 @@ body {
   }
 
   .session-btn {
-    display: inline;
+    a.ping {
+      display: inline;
+      margin-right: 30px;
+    }
+
+    a.ui.button {
+      height: 39px !important;
+    }
   }
 }
 
