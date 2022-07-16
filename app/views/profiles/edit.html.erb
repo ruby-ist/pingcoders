@@ -107,6 +107,9 @@
 			</div>
 			
 			<div class="user-form">
+				<% if @user.github_username != nil %>
+					<%= link_to "Use Github Profile Picture", "/picture/update", class:"ui link"%><br/><br/>
+				<% end %>
 				<%= form_with url: profile_path(@user.id), method: :patch do |form| %>
 					<div class="form-inputs">
 						<%= form.fields_for @user do |f| %>

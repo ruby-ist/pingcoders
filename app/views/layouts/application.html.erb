@@ -16,10 +16,11 @@
 	<h2>Pingcoders</h2>
 	<div class="session-btn">
 		<% if !@search %>
-			<%= link_to profiles_path, class: "ui blue button ping" do %>
+			<%= link_to search_index_path, class: "ui blue button ping" do %>
 				<i class="search icon"></i> ping
 			<% end %>
-		<% elsif user_signed_in? %>
+		<% end %>
+		<% if user_signed_in? && @user != current_user %>
 			<%= link_to profile_path(current_user.id), class: "ui blue button ping" do %>
 				<i class="user icon"></i> profile
 			<% end %>

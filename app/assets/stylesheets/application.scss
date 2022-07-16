@@ -36,6 +36,10 @@ body {
   }
 }
 
+.ui.blue.button{
+  background: var(--blue);
+}
+
 .ui.sticky{
   position: relative;
 }
@@ -610,4 +614,65 @@ body {
 
 i.trash.link.icon.delete-repo{
   margin-left: 10px;
+}
+
+.search-wrapper{
+  height: 100%;
+  width: 100%;
+  padding: 10vh;
+
+  .search-box{
+    background: var(--medium-black);
+    border: 1px solid var(--dark-grey);
+    border-radius: 10px;
+    height: 90%;
+    padding: 4vw 8vw;
+    overflow: scroll;
+
+    .search-label{
+      width: 100%;
+      text-align: left;
+    }
+
+    .ui.dropdown{
+      background: var(--blue);
+      border: none;
+    }
+
+    input{
+      background: var(--main-background);
+      border-color: var(--dark-grey);
+      color: var(--white);
+      border-radius: 0;
+    }
+
+    input:focus{
+      background: var(--main-background);
+      border-color: var(--dark-grey);
+      color: var(--white);
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+
+    .suggestion{
+      padding: 1% 6% 3%;
+      border-bottom: 1px solid var(--dark-grey);
+      cursor: pointer;
+
+      &:hover{
+        border-radius: 5px;
+        border: 1px solid var(--blue);
+      }
+
+      .ui.header{
+        color: var(--blue);
+        margin-bottom: 11px;
+      }
+
+      .ui.label{
+        margin-right: 5px;
+      }
+    }
+  }
 }

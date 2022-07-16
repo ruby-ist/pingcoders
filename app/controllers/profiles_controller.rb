@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
 
-    before_action :authenticate_user!
+    include ProfilesHelper
+
+    before_action :authenticate_user!, except: [:show]
 
     def index
         @search = true
@@ -16,11 +18,19 @@ class ProfilesController < ApplicationController
     end
 
     def update
-        fields = params.require(:user).permit(:name, :image_url, :github_username, :hackerrank_username, :stackoverflow_url, :linkedin_url, :portfolio_url)
+        fields = params.require(:user).permit(:name, :image_url, :github_username, :hackerrank_username, :stackoverflow_url , :linkedin_url, :portfolio_url)
         user = current_user
         if user.update(fields)
             redirect_to profile_path(user.id)
         end
+    end
+
+    def picture
+        user = current_user
+        account = UserFinder.new
+        url = account.find_pic user.github_username
+        user.update(image_url: url)
+        redirect_to profile_path(user.id)
     end
 
     private

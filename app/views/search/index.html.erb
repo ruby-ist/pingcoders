@@ -1,0 +1,21 @@
+<div class="search-wrapper">
+	<div class="ui container search-box">
+		<div data-controller="search" data-search-default-url-value="<%= image_path('profile-pic.jpg') %>">
+			<div class="search-label">Search By:</div>
+			<br/>
+			
+			<div class="ui action fluid input">
+				<select class="ui compact selection dropdown">
+					<option value="Name">Name</option>
+					<option value="Language">Language</option>
+					<option value="Skill">Skill</option>
+				</select>
+				<input data-search-target="input" type="text" placeholder="Search...">
+				<div class="ui positive button" data-action="click->search#getData">Search</div>
+			</div>
+			<br/>
+			<br/>
+			<div class="suggestion-box" data-search-target="suggestion"></div>
+		</div>
+	</div>
+</div>
