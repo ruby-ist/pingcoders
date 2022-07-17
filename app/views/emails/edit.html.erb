@@ -2,7 +2,7 @@
 	<%= form_with url: profile_email_path(@profile_id, @email.id), method: :patch do |f| %>
 		<div class="lined-input">
 			<li>
-				<%= f.text_field "email", value: @email.email, placeholder: "Email", autocomplete: "off", required: true %>
+				<%= f.email_field "email", value: @email.email, placeholder: "Email", autocomplete: "off", type: "email", required: true %>
 				<%= f.button class: "ui compact icon button" do %>
 					<i class="save blue icon"></i>
 				<% end %>

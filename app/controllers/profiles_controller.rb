@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
 
     def index
         @search = true
+        redirect_to profile_path(current_user.id)
     end
 
     def show
@@ -44,7 +45,7 @@ class ProfilesController < ApplicationController
             id = nil
             likes = Like.where(repo_id: repo.id).to_a
             likes.each do |i|
-                if i.user_id == current_user.id
+                if user_signed_in? && i.user_id == current_user.id
                     id = i.id
                 end
             end

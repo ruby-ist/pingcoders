@@ -2,7 +2,7 @@
 	<%= form_with url: profile_number_path(@profile_id, @number.id), method: :patch do |f| %>
 		<div class="lined-input">
 			<li>
-				<%= f.text_field "number", value: @number.number, placeholder: "Number", autocomplete: "off", required: true %>
+				<%= f.text_field "number", value: @number.number, placeholder: "Number", autocomplete: "off", type: "tel", pattern: "[0-9]{10}", required: true %>
 				<%= f.button class: "ui compact icon button" do %>
 					<i class="save blue icon"></i>
 				<% end %>

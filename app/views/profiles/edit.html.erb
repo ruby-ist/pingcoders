@@ -114,7 +114,7 @@
 					<div class="form-inputs">
 						<%= form.fields_for @user do |f| %>
 							<i class="user icon"></i>
-							<%= f.text_field :name, value: @user.name, placeholder: "Name", autocomplete: "off" %>
+							<%= f.text_field :name, value: @user.name, placeholder: "Name", autocomplete: "off", required: true %>
 							<br/>
 							<i class="file image icon"></i>
 							<%= f.text_field :image_url, value: @user.image_url, placeholder: "Profile picture url", autocomplete: "off" %>

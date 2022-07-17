@@ -9,7 +9,7 @@ class NumbersController < ApplicationController
     def create
         user = current_user
         user.numbers << Number.create(number: params[:number])
-        redirect_to edit_profile_path(user.id)
+        redirect_to new_profile_number_path(user.id)
     end
 
     def edit
