@@ -1,25 +1,38 @@
-<h2>Change your password</h2>
+<div class="sign-in-wrapper">
+    <div class="ui raised segments sign-in-box">
+        <div class="ui very padded text segment">
+            <h2 class="ui blue large centered header">Change your password</h2>
+            <div class="ui divider"></div>
+            <br/>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+              
+              <%= f.hidden_field :reset_password_token %>
+            
+              <div class="field">
+                <%= f.label :password, "New password" %><br />
+                <div  class="sign-in-input">
+                <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+                </div>
+              </div>
+            
+              <div class="field">
+                <%= f.label :password_confirmation, "Confirm new password" %><br />
+                <div  class="sign-in-input">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                </div>
+              </div>
+              <br/>
+              <%= render "users/shared/error_messages", resource: resource %>
+              <br/>
+              <div class="actions reset-btn">
+                <%= f.submit "Change my password", class: "ui primary button" %>
+              </div>
+            <% end %>
+        </div>
+    
+        <div class="ui secondary segment">
+            <%= render "users/shared/links" %>
+        </div>
+    </div>
+</div>
