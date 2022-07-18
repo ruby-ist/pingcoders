@@ -307,7 +307,7 @@ body {
 .sign-in-wrapper {
   display: grid;
   place-items: center;
-  padding: 10vh;
+  padding: 8vw 10vw 10vh;
 }
 
 .sign-in-box {
@@ -319,7 +319,7 @@ body {
 
   .sign-in-input {
     input {
-      width: 20vw;
+      width: 300px;
       background: var(--dark-grey);
       border: 1px solid var(--main-background);
       border-radius: 5px;
@@ -576,7 +576,7 @@ body {
 .form-inputs{
   input{
     width: 90%;
-    background: transparent;
+    background: var(--main-background);
     border: 2px solid var(--dark-grey);
     border-radius: 5px;
     margin: 5px 0;
@@ -619,7 +619,7 @@ i.trash.link.icon.delete-repo{
 .search-wrapper{
   height: 100%;
   width: 100%;
-  padding: 10vh;
+  padding: 5vw;
 
   .search-box{
     background: var(--medium-black);
@@ -672,6 +672,145 @@ i.trash.link.icon.delete-repo{
 
       .ui.label{
         margin-right: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .ui.grid{
+    width: 100vw;
+    margin: 0;
+
+    .vertical-line{
+      top: initial;
+      bottom: 0;
+      right: 0;
+      height: 2px;
+      width: 100vw;
+    }
+  }
+
+  #skillsets{
+    width: 100vw;
+    padding: 0;
+  }
+
+  .main-profile{
+    .ui.large.header{
+      padding-top: 240px;
+    }
+
+    .profile-img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: auto;
+      font-size: 1rem;
+    }
+  }
+
+  .contacts{
+    width: 70vw;
+  }
+
+  .user-profile #address{
+    width: 70vw;
+  };
+
+  .section{
+    height: auto;
+  }
+
+  .round-boxes{
+    padding: 0;
+    justify-content: center;
+  }
+
+  .round-boxes li{
+    margin: 10px;
+    padding: 3px 15px;
+    border-radius: 20px;
+  }
+
+  .user-profile{
+    .edit-btn{
+      top: -10px;
+      left: 90%;
+    }
+  }
+
+  .skill-profile{
+    padding: 0 11px;
+
+    .division{
+      padding: 10px;
+    }
+
+    .row{
+      width: 100%;
+      overflow-x: clip;
+      text-align: center;
+    }
+
+    .edit-btn{
+      left: 85%;
+      top: -5px;
+    }
+
+    form{
+      margin: 30px 20px;
+
+      .attached-btn-input{
+        width: 100%;
+
+        .input-wrapper{
+          .suggestion-box{
+            width: initial;
+          }
+        }
+      }
+    }
+  }
+
+  .project-boxes{
+    text-align: left;
+
+    .project{
+      padding: 0 0 50px 0;
+    }
+
+    .lang-list{
+      padding: 0;
+      width: 100%;
+    }
+
+    .update-time{
+      right: 0;
+    }
+
+    .repo-btn{
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .search-wrapper .search-box{
+    padding: 4vw;
+
+    .ui.compact.selection.dropdown{
+      padding-right: 25px;
+    }
+  }
+
+  .sign-in-box{
+    width: 100%;
+
+    .sign-in-input{
+      input {
+        width: 100%;
       }
     }
   }
