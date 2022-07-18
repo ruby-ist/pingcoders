@@ -98,6 +98,7 @@
     <orderEntry type="library" scope="PROVIDED" name="omniauth-oauth2 (v1.7.3, ruby-2.7.4-p191) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="omniauth-rails_csrf_protection (v1.0.1, ruby-2.7.4-p191) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, ruby-2.7.4-p191) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v1.4.1, ruby-2.7.4-p191) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.7, ruby-2.7.4-p191) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.6.4, ruby-2.7.4-p191) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.0, ruby-2.7.4-p191) [gem]" level="application" />
