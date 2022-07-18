@@ -6,7 +6,7 @@ class SearchController < ApplicationController
 
     def show
         data = []
-        query = params[:id]
+        query = params[:id].downcase
         case params[:type]
         when "Name"
             users = User.where('name like ?', "%"+ User.sanitize_sql_like(query) +"%")
