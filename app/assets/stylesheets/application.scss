@@ -25,7 +25,7 @@ body {
   --dark-grey: #24292f;
   --medium-black: #121519;
   --light-grey: #79828c;
-  background: var(--main-background);
+  background: var(--main-background) !important;
   color: var(--light-grey);
   font-family: 'Lato', sans-serif;
 
@@ -59,6 +59,7 @@ body {
     display: inline-block;
     color: var(--blue);
     margin-left: 20px;
+    margin-bottom: 0;
     font-size: 2rem;
     font-family: 'Expletus Sans', cursive;
   }
@@ -677,6 +678,10 @@ i.trash.link.icon.delete-repo{
   }
 }
 
+.mobile-session-btn{
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
 
   .ui.grid{
@@ -813,5 +818,32 @@ i.trash.link.icon.delete-repo{
         width: 100%;
       }
     }
+  }
+
+  .session-btn{
+    display: none;
+  }
+
+  .navbar{
+    position: fixed;;
+    width: 100%;
+    top: 0;
+    z-index: 4;
+  }
+
+  #main{
+    margin-top: 10vh;
+  }
+
+  .mobile-session-btn{
+    display: block;
+  }
+
+  body.pushable>.pusher {
+    background: var(--main-background);
+  }
+
+  .ui.vertical.sidebar{
+    background: var(--blue);
   }
 }

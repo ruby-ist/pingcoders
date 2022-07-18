@@ -4,3 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link semantic-ui.js
 //= link semantic-ui/toast.js
+//= link semantic-ui/sidebar.js

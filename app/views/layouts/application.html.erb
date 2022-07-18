@@ -12,29 +12,64 @@
 </head>
 
 <body>
-<header class="navbar">
-	<h2>Pingcoders</h2>
-	<div class="session-btn">
-		<% if !@search %>
-			<%= link_to search_index_path, class: "ui blue button ping" do %>
-				<i class="search icon"></i> ping
-			<% end %>
+<div class="ui right vertical sidebar labeled icon menu">
+	<% if !@search %>
+		<%= link_to search_index_path, class: "item" do %>
+			<i class="search link icon"></i>
+			Ping
 		<% end %>
-		<% if user_signed_in? && @user != current_user %>
-			<%= link_to profile_path(current_user.id), class: "ui blue button ping" do %>
-				<i class="user icon"></i> profile
-			<% end %>
+	<% end %>
+	
+	<% if user_signed_in? && @user != current_user %>
+		<%= link_to profile_path(current_user.id), class: "item" do %>
+			<i class="user link icon"></i>
+			Profile
 		<% end %>
-		<%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "ui negative button" if user_signed_in? %>
-		<%= link_to "Sign In", new_user_session_path, method: :get, class: "ui positive button" unless user_signed_in? %>
-	</div>
+	<% end %>
+	
+	<% if user_signed_in? %>
+		<%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "item" do %>
+			<i class="sign out alternate icon"></i>
+			Sign Out
+		<% end %>
+	<% else %>
+		<%= link_to new_user_session_path, method: :get, class: "item" do %>
+			<i class="sign in alternate icon"></i>
+			Sign In
+		<% end %>
+	<% end %>
+</div>
 
-</header>
-<% if alert %>
-	<div data-controller="toast" data-toast-type-value="alert" data-toast-message-value="<%= alert %>"></div>
-<% elsif notice %>
-	<div data-controller="toast" data-toast-type-value="notice" data-toast-message-value="<%= notice %>"></div>
-<% end %>
-<%= yield %>
+<div class="pusher">
+	<header class="navbar">
+		<h2>Pingcoders</h2>
+		<div class="session-btn">
+			<% if !@search %>
+				<%= link_to search_index_path, class: "ui blue button ping" do %>
+					<i class="search icon"></i> ping
+				<% end %>
+			<% end %>
+			<% if user_signed_in? && @user != current_user %>
+				<%= link_to profile_path(current_user.id), class: "ui blue button ping" do %>
+					<i class="user icon"></i> profile
+				<% end %>
+			<% end %>
+			<%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui negative button" if user_signed_in? %>
+			<%= link_to "Sign In", new_user_session_path, method: :get, class: "ui positive button" unless user_signed_in? %>
+		</div>
+		
+		<div class="mobile-session-btn" data-controller="sidebar">
+			<i class="large bars icon" data-action="click->sidebar#toggle"></i>
+		</div>
+	</header>
+	<% if alert %>
+		<div data-controller="toast" data-toast-type-value="alert" data-toast-message-value="<%= alert %>"></div>
+	<% elsif notice %>
+		<div data-controller="toast" data-toast-type-value="notice" data-toast-message-value="<%= notice %>"></div>
+	<% end %>
+	<div id="main">
+		<%= yield %>
+	</div>
+</div>
 </body>
 </html>
