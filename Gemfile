@@ -71,7 +71,7 @@ group :test do
 end
 
 group :production do
-    gem "pg"
+    gem "activerecord-cockroachdb-adapter"
 end
 
 gem "rspec-rails", "~> 5.1"
