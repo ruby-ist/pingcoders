@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Skill, type: :model do
     let(:skill) { Skill.create(name: "Ruby on Rails") }
-    let(:user) { User.create(email: "srira@gmail.com", password: "1234567") }
+    let(:user) { User.create(email: "srira@bitsathy.ac.in", password: "1234567") }
 
     it "has users" do
         expect(skill.users).to be_empty

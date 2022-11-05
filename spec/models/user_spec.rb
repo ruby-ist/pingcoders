@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-    let(:user) { User.create(email: "srira123@gmail.com", password: "1234567") }
+    let(:user) { User.create(email: "srira123@bitsathy.ac.in", password: "1234567") }
 
     it "can be created without skills and languages" do
-        expect(User.create(email: "srira@gmail.com", password: "1234567")).to be_instance_of User
+        expect(User.create(email: "srira@bitsathy.ac.in", password: "1234567")).to be_instance_of User
     end
 
     it "has an empty skills array" do
@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
     it "can be deleted" do
         user.addresses << Address.create(address: "abc street")
         user.numbers << Number.create(number: "121323232")
-        user.emails << Email.create(email: "23323@gmail.com")
+        user.emails << Email.create(email: "23323@bitsathy.ac.in")
 
         expect(user.addresses).not_to be_empty
         expect(user.numbers).not_to be_empty

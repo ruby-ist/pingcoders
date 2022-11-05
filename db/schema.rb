@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_14_045832) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_094233) do
   create_table "addresses", force: :cascade do |t|
     t.text "address"
     t.integer "user_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_14_045832) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "room_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "numbers", force: :cascade do |t|
     t.string "number"
     t.integer "user_id"
@@ -65,6 +75,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_14_045832) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_repos_on_user_id"
+  end
+
+  create_table "room_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_users_on_room_id"
+    t.index ["user_id"], name: "index_room_users_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "skill_sets", force: :cascade do |t|

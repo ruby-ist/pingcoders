@@ -15,6 +15,10 @@ class User < ApplicationRecord
     has_many :repos, dependent: :destroy
     has_many :likes, dependent: :destroy
 
+    has_many :room_users, dependent: :destroy
+    has_many :rooms, through: :room_users
+    has_many :messages, dependent: :destroy
+
     before_update do
         self.name = self.name.presence
         self.github_username = self.github_username.presence
