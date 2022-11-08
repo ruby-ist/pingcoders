@@ -1,20 +1,28 @@
 class RoomsController < ApplicationController
 
-    before_action :authenticate_user!
+	before_action :authenticate_user!
+	before_action :assign_variables, only: [:index, :show]
 
-    def index
-        room_users = RoomUser.where(user: current_user)
-        @rooms = room_users.map {|i| i.room}
-        @users = @rooms.map { |room| (room.users - [current_user])[0] }
-    end
+	def index
+	end
 
-    def show
-        @room = Room.new
-        @rooms.each do |r|
-            if r.users.include params[:user]
-                @room = r
-            end
-        end
-    end
+	def show
+		@room = Room.new
+		@user = User.find params[:id].to_i
+		@rooms.each do |r|
+			if r.users.include? @user
+				@room = r
+			end
+		end
+		@messages = @room ? @room.messages : []
+	end
+
+	private
+
+	def assign_variables
+		room_users = RoomUser.where(user: current_user)
+		@rooms = room_users.map { |i| i.room }
+		@users = @rooms.map { |room| (room.users - [current_user])[0] }
+	end
 
 end

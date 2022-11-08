@@ -1,0 +1,31 @@
+<div class="ui grid">
+	<%= render partial: 'rooms/chat_list' %>
+	
+	<div class="eleven wide column chat-room">
+		<div class="room-header">
+			<%= image_tag (@user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+			<div class="ui large header room-user-name"><%= @user.name %></div>
+		</div>
+		
+		<div class="actual-chats">
+			<% @messages.each do |m| %>
+				<% c_user = m.user == current_user %>
+				<div class="actual-message" style="<%= 'text-align: right;' if c_user %>">
+					<div class="content" style="<%= 'background: #1a3e6a' if c_user %>">
+						<%= m.content %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		
+		<div class="msg-input">
+			<%= form_with url: room_messages_path(@user.id), method: :post do |f| %>
+				<%= f.hidden_field "room", value: @room.id %>
+				<div class="ui input">
+					<%= f.text_field "content", class:"msg-field", placeholder: "Message..." %>
+				</div>
+				<%= f.submit "Send", class: "ui blue button msg-send" %>
+			<% end %>
+		</div>
+	</div>
+</div>
