@@ -1,20 +1,40 @@
 <div class="ui grid">
-	<div class="five wide column message-index">
+	<div class="five wide column message-index"
+		 data-controller="find"
+		 data-find-default-url-value="<%= image_path('profile-pic.jpg') %>">
+		
 		<div class="chat-header">
 			<div class="ui icon input">
 				<i class="search icon"></i>
-				<input type="text" placeholder="Chat with colleagues..." />
+				<input data-find-target="input" type="text" placeholder="Chat with colleagues..."/>
 			</div>
 		</div>
-		<div class="chats">
-			<div class="no-chat">
-				<i class="huge frog icon"></i>
-				<div class="empty-msg">You haven't initiated any convo yet..</div>
-			</div>
+		
+		<div class="chats" data-find-target="suggestion">
+			<% if @users.empty? %>
+				<div class="no-chat">
+					<i class="huge frog icon"></i>
+					<div class="empty-msg">You haven't initiated any convo yet..</div>
+				</div>
+			<% else %>
+				<% @users.each_with_index do |user, index| %>
+					<div class="chat">
+						<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+						<div class="username-chat"><%= user.name %></div>
+						<div class="last-msg"><%= @rooms[index].messages.last.content %></div>
+					</div>
+				<% end %>
+			<% end %>
+		
 		</div>
 	</div>
 	
 	<div class="eleven wide column chat-room">
-		<div class="initial-msg">Select a chat to start messaging</div>
+		
+		<!--		<div class="initial-msg">-->
+		<!--			<div class="text">-->
+		<!--				Select a chat to start messaging-->
+		<!--			</div>-->
+		<!--		</div>-->
 	</div>
 </div>

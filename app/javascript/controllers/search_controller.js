@@ -27,7 +27,7 @@ export default class extends Controller {
 	
 	cardTemplate(data) {
 		let image_url = data["url"];
-		if(image_url === null)
+		if(image_url === '')
 			image_url = this.defaultUrlValue;
 			
 		return `<div class="suggestion" onclick="location.href='/profiles/${data['id']}'">

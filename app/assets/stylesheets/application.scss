@@ -678,10 +678,9 @@ i.trash.link.icon.delete-repo {
     }
 }
 
-
 .message-index {
     border-right: 1px solid var(--dark-grey);
-    height: 90vh;
+    height: 92vh;
     padding-right: 0 !important;
 
     .chat-header{
@@ -717,6 +716,7 @@ i.trash.link.icon.delete-repo {
     .chats{
         height: 80vh;
         position: relative;
+        overflow-y: scroll;
 
         .no-chat{
             position: absolute;
@@ -733,21 +733,48 @@ i.trash.link.icon.delete-repo {
                 margin-bottom: 10%;
             }
         }
+
+        .chat{
+            border-bottom: 1px solid var(--dark-grey);
+            height: 85px;
+            position: relative;
+            padding: 18px 0 10px 90px;
+
+            img{
+                position: absolute;
+                left: 30px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .username-chat{
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: var(--blue);
+                margin-bottom: 7px;
+            }
+        }
     }
 }
 
 .chat-room{
-    background: var(--medium-black);
-    height: 90vh;
+    background: url("chat-bg.svg") no-repeat center;
+    background-size: cover;
+    height: 92vh;
     width: 100%;
 
     .initial-msg{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+        height: 100%;
+        width: 100%;
+        background: var(--medium-black);
 
+        .text{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }
 
 .mobile-session-btn {

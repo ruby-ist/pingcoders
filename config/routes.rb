@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :languages, only: [:index, :create]
     resources :skills, only: [:index, :create]
     resources :colors, only: [:index]
-    resources :rooms, only: [:index]
+    resources :rooms, only: [:index, :show]
 
     get "picture/update", to: "profiles#picture"
 
