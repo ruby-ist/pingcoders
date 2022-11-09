@@ -1,0 +1,8 @@
+<div class="chat" id="<%= dom_id room %>">
+	<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+	<%= link_to room_path(user.id) do %>
+		<div class="username-chat"><%= user.name %></div>
+	<% end %>
+	<div class="last-msg"><%= room.messages.last.content %></div>
+	<div class="last-msg-time"><%=  room.messages.last.created_at.strftime("%l:%M %P") %></div>
+</div>

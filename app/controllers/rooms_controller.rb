@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
 
 	def assign_variables
 		room_users = RoomUser.where(user: current_user)
-		@rooms = room_users.map { |i| i.room }
+		@rooms = room_users.map { |i| i.room }.sort_by {|room| room.messages.last.created_at}.reverse
 		@users = @rooms.map { |room| (room.users - [current_user])[0] }
 	end
 

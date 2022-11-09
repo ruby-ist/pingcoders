@@ -1,5 +1,6 @@
 <div class="actual-message" data-message-target="message" data-user-id="<%= message.user.id %>">
 	<div class="content" >
 		<%= message.content %>
+		<div class="msg-time"><%= message.created_at.strftime('%l:%M %P') %></div>
 	</div>
 </div>

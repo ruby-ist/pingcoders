@@ -9,23 +9,16 @@
 		</div>
 	</div>
 	
-	<div class="chats" data-find-target="suggestion">
+	<div class="chats" data-find-target="suggestion" id="rooms">
 		<% if @users.empty? %>
 			<div class="no-chat">
 				<i class="huge frog icon"></i>
 				<div class="empty-msg">You haven't initiated any convo yet..</div>
 			</div>
 		<% else %>
-			<% @users.each_with_index do |user, index| %>
-				<div class="chat">
-					<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
-					<%= link_to room_path(user.id) do %>
-						<div class="username-chat"><%= user.name %></div>
-					<% end %>
-					<div class="last-msg"><%= @rooms[index].messages.last.content %></div>
-				</div>
+			<% @rooms.each_with_index do |room, index| %>
+				<%= render room, user: @users[index] %>
 			<% end %>
 		<% end %>
-	
 	</div>
 </div>

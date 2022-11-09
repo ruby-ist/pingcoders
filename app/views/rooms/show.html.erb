@@ -1,6 +1,6 @@
+<%= turbo_stream_from "room" %>
 <div class="ui grid">
 	<%= render partial: 'rooms/chat_list' %>
-	
 	<div class="eleven wide column chat-room">
 		<div class="room-header">
 			<%= image_tag (@user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
@@ -8,9 +8,7 @@
 		</div>
 		
 		<div data-controller="message" data-message-cuser-value="<%= current_user.id %>" data-action="turbo:stream-end->message#scrollToBottom">
-			<%= turbo_stream_from "room" %>
-			
-			<div class="actual-chats" id="messages" data-message-target="chats">
+			<div class="actual-chats" id="messages_<%= @room.id %>" data-message-target="chats">
 				<%= render @messages %>
 			</div>
 		</div>

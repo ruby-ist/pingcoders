@@ -758,6 +758,12 @@ i.trash.link.icon.delete-repo {
 				color: var(--blue);
 				margin-bottom: 7px;
 			}
+
+			.last-msg-time{
+				position: absolute;
+				right: 5%;
+				bottom: 15%;
+			}
 		}
 	}
 }
@@ -821,9 +827,19 @@ i.trash.link.icon.delete-repo {
 				padding: 10px 15px;
 				width: max-content;
 				max-width: 50%;
-				color: var(--light-grey);
+				color: #a9b7c6;
 				font-size: 1.2rem;
 				display: inline-block;
+				position: relative;
+
+				.msg-time{
+					display: inline;
+					font-size: 0.8rem;
+					position: absolute;
+					bottom: 0;
+					width: max-content;
+					left: 105%;
+				}
 			}
 		}
 	}
@@ -870,7 +886,12 @@ i.trash.link.icon.delete-repo {
 	text-align: right;
 
 	.content{
-		background: #1a3e6a !important;
+		background: #1d5191 !important;
+
+		.msg-time{
+			left: initial !important;
+			right: 105% !important;
+		}
 	}
 }
 
