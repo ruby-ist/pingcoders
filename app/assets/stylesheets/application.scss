@@ -866,6 +866,14 @@ i.trash.link.icon.delete-repo {
 	}
 }
 
+.right-message{
+	text-align: right;
+
+	.content{
+		background: #1a3e6a !important;
+	}
+}
+
 .mobile-session-btn {
 	display: none;
 }

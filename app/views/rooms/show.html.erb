@@ -7,22 +7,19 @@
 			<div class="ui large header room-user-name"><%= @user.name %></div>
 		</div>
 		
-		<div class="actual-chats">
-			<% @messages.each do |m| %>
-				<% c_user = m.user == current_user %>
-				<div class="actual-message" style="<%= 'text-align: right;' if c_user %>">
-					<div class="content" style="<%= 'background: #1a3e6a' if c_user %>">
-						<%= m.content %>
-					</div>
-				</div>
-			<% end %>
+		<div data-controller="message" data-message-cuser-value="<%= current_user.id %>" data-action="turbo:stream-end->message#scrollToBottom">
+			<%= turbo_stream_from "room" %>
+			
+			<div class="actual-chats" id="messages" data-message-target="chats">
+				<%= render @messages %>
+			</div>
 		</div>
 		
 		<div class="msg-input">
 			<%= form_with url: room_messages_path(@user.id), method: :post do |f| %>
 				<%= f.hidden_field "room", value: @room.id %>
 				<div class="ui input">
-					<%= f.text_field "content", class:"msg-field", placeholder: "Message..." %>
+					<%= f.text_field "content", class: "msg-field", placeholder: "Message..." %>
 				</div>
 				<%= f.submit "Send", class: "ui blue button msg-send" %>
 			<% end %>
