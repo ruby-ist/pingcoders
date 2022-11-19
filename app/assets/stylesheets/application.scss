@@ -899,6 +899,101 @@ i.trash.link.icon.delete-repo {
 	display: none;
 }
 
+.form-cover{
+	min-height: 90vh;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	font-size: 1.3rem;
+	padding: 100px 0;
+
+	.black.button{
+		position: absolute;
+		bottom: -53px;
+		right: calc(15vw + 110px);
+	}
+}
+
+.post-form{
+	position: relative;
+
+	label{
+		color: var(--blue);
+	}
+
+	input.field{
+		background: transparent;
+		border: none;
+		border-bottom: 1px solid var(--dark-grey);
+		color: var(--light-grey);
+		margin-left: 12px;
+		margin-bottom: 25px;
+		width: 300px;
+
+		&:focus{
+			outline: none;
+		}
+	}
+
+	textarea.text{
+		display: block;
+		background: var(--medium-black);
+		height: 500px;
+		width: 70vw;
+		margin-top: 10px;
+		border: 1px solid var(--dark-grey);
+		border-radius: 10px;
+		color: var(--light-grey);
+		padding: 10px 15px;
+
+		&:focus{
+			outline: none;
+		}
+	}
+
+	.blue.button{
+		margin-top: 20px;
+		position: absolute;
+		right: 0;
+	}
+}
+
+.job-viewer{
+	padding: 5% 10%;
+}
+
+.job-post{
+	background: var(--medium-black);
+	padding: 6%;
+	border-radius: 10px;
+	border: 1px solid var(--dark-grey);
+	position: relative;
+
+	.job-details{
+		font-size: 1.3rem;
+	}
+
+	.post-user{
+		text-align: right;
+
+		em{
+			display: block;
+			margin-bottom: 20px;
+		}
+
+		.avatar-username{
+			margin-left: 5px;
+			font-size: 1.2rem;
+		}
+	}
+
+	.blue.button{
+		position: absolute;
+		top: 60px;
+		right: 50px;
+	}
+}
+
 @media screen and (max-width: 600px) {
 
 	.ui.grid {

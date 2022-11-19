@@ -1,0 +1,34 @@
+<%= form_with(model: post, class: 'post-form') do |form| %>
+	<% if post.errors.any? %>
+		<div style="color: red">
+			<h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+			
+			<ul>
+				<% post.errors.each do |error| %>
+					<li><%= error.full_message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<div>
+		<%= form.label :role, style: "display: inline-block" %>:
+		<%= form.text_field :role, class: "field" %>
+	</div>
+	
+	<div>
+		<%= form.label :project_name, style: "display: inline-block" %>:
+		<%= form.text_field :project, class: "field" %>
+	</div>
+	
+	<div>
+		<%= form.label :job_details, style: "display: inline-block" %>:
+		<%= form.text_area :body, class: "text" %>
+	</div>
+	
+	<%= form.hidden_field :user_id, value: current_user.id %>
+	
+	<div>
+		<%= form.submit value: "Post Job", class: "ui blue button" %>
+	</div>
+<% end %>

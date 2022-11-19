@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="job-viewer">
+	<div id="<%= dom_id @post %>" class="job-post">
+		<p class="ui big header">
+			<%= @post.role %>
+		</p>
+		
+		<p class="ui header" style="color: var(--light-grey)">
+			<%= @post.project %>
+		</p>
+		
+		<hr style="border-color: var(--dark-grey);margin-bottom: 40px"/>
+		
+		<p class="job-details">
+			<%= @post.body %>
+		</p>
+		
+		<div class="post-user">
+			<em>posted by</em>
+			<%= image_tag (@user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+			<%= link_to room_path(@user.id), class: "avatar-username" do %>
+				<span><%= @user.name %></span>
+			<% end %>
+		</div>
+		
+		<% if @post.user_id == current_user.id %>
+			<%= link_to "Edit", edit_post_path(@post), class: "ui blue button" %>
+		<% end %>
+	</div>
+
+</div>
