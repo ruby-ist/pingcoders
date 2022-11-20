@@ -59,7 +59,9 @@ export default class extends Controller {
 					}
 					suggestion.innerHTML += `<div class="chat">
 												<img class="ui mini avatar image" src="${data[i]['url']}" >
+												<a href="/rooms/${data[i]['id']}">
 												<div class="username-chat">${data[i]['name']}</div>
+												</a>
 											</div>`;
 				}
 			}
