@@ -236,6 +236,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redcarpet (3.5.1)
     redis (4.6.0)
     regexp_parser (2.5.0)
     reline (0.3.1)
@@ -344,6 +345,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0)
   puma (~> 5.0)
   rails (~> 7.0.3)
+  redcarpet (~> 3.5)
   redis (~> 4.0)
   rspec-rails (~> 5.1)
   sassc-rails

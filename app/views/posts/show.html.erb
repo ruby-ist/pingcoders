@@ -6,20 +6,22 @@
 			<%= @post.role %>
 		</p>
 		
-		<p class="ui header" style="color: var(--light-grey)">
+		<span class="ui header" style="color: var(--light-grey)">
 			<%= @post.project %>
-		</p>
+		</span>
+		
+		<em> &nbsp &#8226 &nbsp  <%= time_ago_in_words @post.created_at %> ago</em>
 		
 		<hr style="border-color: var(--dark-grey);margin-bottom: 40px"/>
 		
-		<p class="job-details">
-			<%= @post.body %>
-		</p>
+		<div class="job-details">
+			<%= markdown @post.body %>
+		</div>
 		
 		<div class="post-user">
 			<em>posted by</em>
 			<%= image_tag (@user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
-			<%= link_to room_path(@user.id), class: "avatar-username" do %>
+			<%= link_to profile_path(@user.id), class: "avatar-username" do %>
 				<span><%= @user.name %></span>
 			<% end %>
 		</div>

@@ -45,6 +45,14 @@ body {
 	background: #267eff;
 }
 
+a:hover{
+	color: #267eff !important;
+}
+
+a.ui.button:hover{
+	color: var(--white) !important;
+}
+
 .ui.sticky {
 	position: relative;
 }
@@ -70,15 +78,40 @@ body {
 	}
 
 	.session-btn {
-		a.ping {
-			display: inline;
-			margin-right: 30px;
+		a{
+			display: inline-block;
+			background: transparent;
+			color: var(--light-grey);
+			font-size: 1.15rem;
+			width: 95px;
+			font-weight: 600;
+			text-align: center;
+
+			&:hover{
+				color: var(--blue);
+			}
+		}
+
+		a:last-child{
+			margin-left: 20px;
+			padding: 10px 20px;
+			width: initial;
+
+			&:hover{
+				color: var(--light-grey);
+			}
 		}
 
 		a.ui.button {
 			height: 39px !important;
 		}
 	}
+}
+
+#main{
+	height: 90vh;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .main {
@@ -631,9 +664,8 @@ i.trash.link.icon.delete-repo {
 		background: var(--medium-black);
 		border: 1px solid var(--dark-grey);
 		border-radius: 10px;
-		height: 90%;
+		min-height: 90%;
 		padding: 4vw 8vw;
-		overflow-y: scroll;
 
 		.search-label {
 			width: 100%;
@@ -944,7 +976,8 @@ i.trash.link.icon.delete-repo {
 		border: 1px solid var(--dark-grey);
 		border-radius: 10px;
 		color: var(--light-grey);
-		padding: 10px 15px;
+		padding: 45px;
+		font-size: 1.15rem;
 
 		&:focus{
 			outline: none;
@@ -970,7 +1003,8 @@ i.trash.link.icon.delete-repo {
 	position: relative;
 
 	.job-details{
-		font-size: 1.3rem;
+		font-size: 1.2rem;
+		padding-bottom: 30px;
 	}
 
 	.post-user{
@@ -991,6 +1025,40 @@ i.trash.link.icon.delete-repo {
 		position: absolute;
 		top: 60px;
 		right: 50px;
+	}
+}
+
+.post-index{
+	padding: 7% 15%;
+	position: relative;
+
+	h2{
+		margin-bottom: 30px;
+	}
+
+	.job-post{
+		margin-bottom: 50px;
+	}
+
+	.ui.blue.button{
+		position: absolute;
+		top: 50px;
+		right: 15%;
+	}
+
+	.icon.input{
+		position: absolute;
+		top: 50px;
+		right: calc(15% + 120px);
+
+		i, input{
+			color: var(--light-grey);
+		}
+
+		input{
+			background: var(--medium-black);
+			border-color: var(--dark-grey);
+		}
 	}
 }
 

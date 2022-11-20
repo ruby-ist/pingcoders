@@ -29,6 +29,14 @@ class SearchController < ApplicationController
                     data << {"id": i.id, "name": i.name, "url": i.image_url || "", "tags": skills }
                 end
             end
+        when "Job"
+            posts = Post.where("body " + ENV["like"] + " ?", "%"+ Post.sanitize_sql_like(query) + "%").to_a
+            unless posts.empty?
+                render posts
+            else
+                render inline: '<div class="no-result" style="text-align: center">No Match Found!</div>'
+            end
+            return
         end
         render json: data
     end

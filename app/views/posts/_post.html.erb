@@ -1,15 +1,18 @@
 <div id="<%= dom_id post %>" class="job-post">
-  <p class="ui big header">
-    <%= post.role %>
-  </p>
-
-  <p class="ui header" style="color: var(--light-grey)">
-    <%= post.project %>
-  </p>
-  
-  <hr style="border-color: var(--dark-grey);margin-bottom: 40px" />
-
-  <p class="job-details">
-    <%= post.body %>
-  </p>
+	<p class="ui big header">
+		<%= link_to post.role, post_path(post) %>
+	</p>
+	
+	<span class="ui header" style="color: var(--light-grey)">
+		<%= post.project %>
+	</span>
+	
+	<em> &nbsp &#8226 &nbsp  <%= time_ago_in_words post.created_at %> ago</em>
+	
+	
+	<hr style="border-color: var(--dark-grey);margin-bottom: 40px"/>
+	
+	<p class="job-details">
+		<%= truncate post.body, length: 900 %>
+	</p>
 </div>

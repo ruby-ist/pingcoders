@@ -14,14 +14,17 @@
 
 <body>
 <div class="ui right vertical sidebar labeled icon menu">
-	<% if !@search %>
 		<%= link_to search_index_path, class: "item" do %>
 			<i class="search link icon"></i>
 			Ping
 		<% end %>
+	
+	<%= link_to posts_path, class: "item" do %>
+		<i class="laptop code link icon"></i>
+		Jobs
 	<% end %>
 	
-	<% if user_signed_in? && @user != current_user %>
+	<% if user_signed_in? %>
 		<%= link_to profile_path(current_user.id), class: "item" do %>
 			<i class="user link icon"></i>
 			Profile
@@ -29,10 +32,16 @@
 	<% end %>
 	
 	<% if user_signed_in? %>
+		<%= link_to rooms_path, class: "item" do %>
+			<i class="comment link icon"></i>
+			Chat
+		<% end %>
+		
 		<%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "item" do %>
 			<i class="sign out alternate icon"></i>
 			Sign Out
 		<% end %>
+	
 	<% else %>
 		<%= link_to new_user_session_path, method: :get, class: "item" do %>
 			<i class="sign in alternate icon"></i>
@@ -45,14 +54,18 @@
 	<header class="navbar">
 		<h2>Pingcoders</h2>
 		<div class="session-btn">
-			<% if !@search %>
-				<%= link_to search_index_path, class: "ui blue button ping" do %>
-					<i class="search icon"></i> ping
-				<% end %>
+			<%= link_to search_index_path do %>
+				<i class="search icon"></i> Ping
 			<% end %>
-			<% if user_signed_in? && @user != current_user %>
-				<%= link_to profile_path(current_user.id), class: "ui blue button ping" do %>
-					<i class="user icon"></i> profile
+			<%= link_to posts_path do %>
+				<i class="laptop code icon"></i> Jobs
+			<% end %>
+			<% if user_signed_in? %>
+				<%= link_to rooms_path do %>
+					<i class="comment icon"></i> Chats
+				<% end %>
+				<%= link_to profile_path(current_user.id) do %>
+					<i class="user icon"></i> Profile
 				<% end %>
 			<% end %>
 			<%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui negative button" if user_signed_in? %>

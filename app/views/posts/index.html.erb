@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+<div class="post-index" data-controller="jobs">
+	<h2>Recent posts</h2>
+	<div id="posts" data-jobs-target="suggestion">
+		<% @posts.each do |post| %>
+			<%= render post %>
+		<% end %>
+	</div>
+	<div class="ui icon input">
+		<i class="search icon"></i>
+		<input type="text" data-jobs-target="input" placeholder="Find Jobs...">
+	</div>
+	<%= link_to "Create job", new_post_path, class: "ui blue button" %>
 </div>
-
-<%= link_to "New post", new_post_path %>
