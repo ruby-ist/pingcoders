@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="job-viewer">
+	<%= render @achievement %>
+	
+	<div>
+		<%= link_to "Edit this achievement", edit_profile_achievement_path(@user.id, @achievement) %> |
+		<%= link_to "Back to achievements", profile_achievements_path(@user.id) %>
+		
+		<%#= button_to "Destroy this achievement", @achievement, method: :delete %>
+	</div>
+</div>

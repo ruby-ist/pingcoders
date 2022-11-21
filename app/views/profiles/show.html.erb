@@ -29,6 +29,8 @@
 									end %>
 							</div>
 							
+							<%= link_to( "(#{@user.achievements.count}) Achievements", profile_achievements_path(@user.id), class: "achievement-link", data: {turbo: false}) %>
+							
 							<div class="horizontal-line"></div>
 						</div>
 						<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>

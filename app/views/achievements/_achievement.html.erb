@@ -1,0 +1,17 @@
+<div id="<%= dom_id achievement %>" class="achievement">
+	<div class="achievement-user">
+		<%= image_tag (@user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+		<%= link_to profile_path(@user.id), class: "avatar-username" do %>
+			<span><%= @user.name %></span>
+		<% end %>
+		<br/> <div class="time"><%= time_ago_in_words achievement.created_at %> ago</div>
+	</div>
+	
+	<p class="description">
+		<%= achievement.description %>
+	</p>
+
+	<a href="<%= profile_achievement_url(current_user.id, achievement) %>">
+		<img src="<%= achievement.image_url %>" alt="certificate"/>
+	</a>
+</div>

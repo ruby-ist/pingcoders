@@ -20,7 +20,7 @@ export default class extends Controller {
 				"interactivity": {
 					"events": {
 						"onClick": {
-							"enable": true,
+							"enable": false,
 							"mode": "push"
 						},
 						"onHover": {
@@ -97,7 +97,7 @@ export default class extends Controller {
 						"density": {
 							"enable": true
 						},
-						"value": 60
+						"value": 100
 					},
 					"opacity": {
 						"value": 0.5,

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+<div class="post-index">
+	<h1>Achievements</h1>
+	
+	<div id="achievements">
+		<% unless @achievements == [] %>
+			<% @achievements.each do |achievement| %>
+				<%= render achievement %>
+			<% end %>
+		<% else %>
+			<p style="text-align: center; margin-top: 100px; font-size: 1.2rem"> No achievements added so far </p>
+		<% end %>
+	</div>
+	
+	<%= link_to "New", new_profile_achievement_path(current_user.id), class: "ui blue button" %>
+</div>

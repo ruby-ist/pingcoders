@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 	resources :search, only: [:index, :show]
 	resources :profiles, only: [:index, :show, :edit, :update] do
+		resources :achievements
 		resources :emails, except: [:index, :show]
 		resources :numbers, except: [:index, :show]
 		resources :addresses, except: [:index, :show]
