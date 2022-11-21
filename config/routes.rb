@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-	resources :posts
 	devise_for :users, controllers: { registrations: 'user/registrations', omniauth_callbacks: 'user/omniauth_callbacks' }
 
-	root "profiles#index"
+	root "rooms#index"
+
+	resources :posts
 
 	resources :search, only: [:index, :show]
 	resources :profiles, only: [:index, :show, :edit, :update] do
@@ -17,12 +18,15 @@ Rails.application.routes.draw do
 		resources :repos, only: [] do
 			resources :likes, only: [:create, :destroy]
 		end
+
+		resources :connections, only: [:create, :update]
 	end
 
 	resources :repos, only: [:index, :create, :destroy]
 	resources :languages, only: [:index, :create]
 	resources :skills, only: [:index, :create]
 	resources :colors, only: [:index]
+
 	resources :rooms, only: [:index, :show] do
 		resources :messages, only: [:create]
 	end

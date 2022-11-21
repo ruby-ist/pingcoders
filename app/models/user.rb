@@ -18,8 +18,12 @@ class User < ApplicationRecord
     has_many :room_users, dependent: :destroy
     has_many :rooms, through: :room_users
     has_many :messages, dependent: :destroy
+
     has_many :posts, dependent: :destroy
     has_many :achievements, dependent: :destroy
+
+    has_many :user_alerts, dependent: :destroy
+    has_many :notifications, through: :user_alerts
 
     before_update do
         self.name = self.name.presence
@@ -41,7 +45,7 @@ class User < ApplicationRecord
                 # user.image = auth.info.image # assuming the user model has an image
                 # If you are using confirmable and the provider(s) you use validate emails,
                 # uncomment the line below to skip the confirmation emails.
-                # user.skip_confirmation!
+                user.skip_confirmation!
             end
         end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_042115) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_211057) do
   create_table "achievements", force: :cascade do |t|
     t.string "description"
     t.string "image_url"
@@ -26,6 +26,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_042115) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "connections", force: :cascade do |t|
+    t.integer "sent_id"
+    t.integer "received_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["received_id"], name: "index_connections_on_received_id"
+    t.index ["sent_id"], name: "index_connections_on_sent_id"
   end
 
   create_table "emails", force: :cascade do |t|
@@ -68,6 +78,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_042115) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "kind", default: 0
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "numbers", force: :cascade do |t|
@@ -125,6 +143,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_042115) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_alerts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "notification_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_id"], name: "index_user_alerts_on_notification_id"
+    t.index ["user_id"], name: "index_user_alerts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -152,5 +179,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_042115) do
   end
 
   add_foreign_key "achievements", "users"
+  add_foreign_key "connections", "users", column: "received_id"
+  add_foreign_key "connections", "users", column: "sent_id"
   add_foreign_key "posts", "users"
 end
