@@ -1,6 +1,7 @@
 class ReposController < ApplicationController
 
     include ReposHelper
+    include NotificationsHelper
 
     before_action :authenticate_user!
 
@@ -23,6 +24,7 @@ class ReposController < ApplicationController
         user = current_user
         name = params[:name]
         user.repos << Repo.create(name: name)
+        create_notification :repo
         redirect_to edit_profile_path(user.id)
     end
 

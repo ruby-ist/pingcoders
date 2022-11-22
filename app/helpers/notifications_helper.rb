@@ -8,7 +8,11 @@ module NotificationsHelper
 		when :job then notification.job!
 		end
 
-		sent_notification(notification)
+		if kind != :request
+			sent_notification(notification)
+		else
+			notification
+		end
 	end
 
 	def sent_notification(notification)

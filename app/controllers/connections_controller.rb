@@ -1,4 +1,7 @@
 class ConnectionsController < ApplicationController
+
+	include NotificationsHelper
+
 	before_action :authenticate_user!
 	before_action :set_connection, only: [:update, :destroy]
 
@@ -11,6 +14,8 @@ class ConnectionsController < ApplicationController
 
 	def create
 		Connection.create!(sent_id: current_user.id, received_id: params[:profile_id])
+		notification = create_notification :request
+		UserAlert.create!(user_id: params[:profile_id], notification: notification.id)
 		redirect_to profile_path(params[:profile_id])
 	end
 

@@ -13,7 +13,6 @@ class ProfilesController < ApplicationController
         (@user, @repos, @liked, @counts) = get_repo_details(params[:id])
         @connection = Connection.find_by(sent_id: current_user.id, received_id: params[:id]) || Connection.find_by(sent_id: params[:id], received_id: current_user.id)
         @connection_count =  Connection.where(sent_id: params[:id], status: :accepted).or(Connection.where(received_id: params[:id], status: :accepted)).count
-
     end
 
     def edit

@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+	include NotificationsHelper
+
 	before_action :authenticate_user!, except: %i[index show]
 	before_action :set_post, only: %i[ show edit update destroy ]
 
@@ -26,6 +29,7 @@ class PostsController < ApplicationController
 
 		respond_to do |format|
 			if @post.save
+				create_notification :job
 				format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
 				format.json { render :show, status: :created, location: @post }
 			else

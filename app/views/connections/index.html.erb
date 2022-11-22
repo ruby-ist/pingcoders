@@ -11,7 +11,7 @@
 				<% @users.each do |user| %>
 					<div class="connection">
 						<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
-						<%= link_to room_path(user.id) do %>
+						<%= link_to profile_path(user.id) do %>
 							<div ><%= user.name %></div>
 						<% end %>
 					</div>

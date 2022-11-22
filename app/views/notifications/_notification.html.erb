@@ -1,0 +1,29 @@
+<% if notification.request? %>
+	<div class="notification request">
+		<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+		<%= link_to notification.user.name, profile_path(user.id) %> wants to connect <br/>
+		<div class="buttons">
+			<!--	Some UI fix about last a child buttons in here-->
+			<div class="ui blue button">Accept</div>
+			<div class="ui black button">Deny</div>
+			<!--	Add object_id column to Notification table-->
+			<!--	create notification controller-->
+			<!--	update the connections with notification controller-->
+		</div>
+		<br/>
+	</div>
+<% elsif notification.job? %>
+	<div class="notification">
+		<a style="width: max-content; margin: auto 15px">
+			<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+		</a>
+		<%= link_to notification.user.name, profile_path(user.id) %> posted a new job opportunity
+	</div>
+<% else %>
+	<div class="notification">
+		<a style="width: max-content; margin: auto 15px">
+			<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+		</a>
+		<%= link_to notification.user.name, profile_path(user.id) %> updated their projects <br/>
+	</div>
+<% end %>

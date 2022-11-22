@@ -64,10 +64,23 @@
 				<%= link_to rooms_path do %>
 					<i class="comment icon"></i> Chats
 				<% end %>
+				
 				<%= link_to profile_path(current_user.id) do %>
 					<i class="user icon"></i> Profile
 				<% end %>
+				
+				<a style="width: max-content; margin: auto 15px">
+					<i class="large bell icon" onclick="$('.notification-box').toggle()"></i>
+					
+					<div class="notification-box">
+						<div class="ui header">Recent Activities: </div>
+						<% @notifications.each do |n| %>
+							<%= render partial: "notifications/notification", locals: {notification: n, user: n.user} %>
+						<% end %>
+					</div>
+				</a>
 			<% end %>
+
 			<%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "ui negative button" if user_signed_in? %>
 			<%= link_to "Sign In", new_user_session_path, method: :get, class: "ui positive button" unless user_signed_in? %>
 		</div>

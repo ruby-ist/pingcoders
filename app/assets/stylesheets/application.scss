@@ -57,6 +57,18 @@ a.ui.button:hover{
 	position: relative;
 }
 
+.ui.black.button{
+	background: #191c22;
+	color: var(--white);
+	border: 1px solid #2a2d33;
+
+	&:hover {
+		background: #24292e;
+		border-color: #6e7882;
+	}
+
+}
+
 .navbar {
 	height: 10vh;
 	display: flex;
@@ -170,7 +182,7 @@ a.ui.button:hover{
 	width: 100%;
 	background: var(--dark-grey);
 	transform: translateX(-50%);
-	z-index: 3;
+	z-index: 1;
 }
 
 .user-profile {
@@ -184,18 +196,6 @@ a.ui.button:hover{
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
-
-		.ui.black.button{
-			background: #191c22;
-			color: var(--white);
-			border: 1px solid #2a2d33;
-
-			&:hover {
-				background: #24292e;
-				border-color: #6e7882;
-			}
-
-		}
 	}
 
 	#address {
@@ -1151,6 +1151,47 @@ i.trash.link.icon.delete-repo {
 			margin-left: 10px;
 			width: 70%;
 			word-break: break-all;
+		}
+	}
+}
+
+.notification-box{
+	position: absolute;
+	width: 500px;
+	height: 55vh;
+	background: var(--medium-black);
+	z-index: 2;
+	border: 1px solid var(--dark-grey);
+	border-radius: 20px;
+	right: 8%;
+	top: 90%;
+	display: none;
+	overflow-y: auto;
+
+	.header{
+		color: var(--light-grey) !important;
+		padding: 15px 20px;
+	}
+
+	.notification{
+		font-size: 1.2rem;
+		border-bottom: 1px solid var(--dark-grey);
+		padding: 15px 20px;
+
+		a {
+			color: #4183C4;
+			width: max-content;
+			font-size: 1.3rem;
+			margin-right: 5px;
+		}
+
+	}
+
+	.request.notification{
+		padding: 5px 20px;
+
+		.buttons{
+			text-align: right;
 		}
 	}
 }
