@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	devise_for :users, controllers: { registrations: 'user/registrations', omniauth_callbacks: 'user/omniauth_callbacks' }
 
-	root "rooms#index"
+	root "posts#index"
 
 	resources :posts
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 			resources :likes, only: [:create, :destroy]
 		end
 
-		resources :connections, only: [:create, :update]
+		resources :connections, only: [:index, :create, :update]
 	end
 
 	resources :repos, only: [:index, :create, :destroy]

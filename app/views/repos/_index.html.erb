@@ -13,27 +13,29 @@
 					</div>
 					
 					<% if user_signed_in? %>
-						<div class="repo-btn">
-							<% if @liked[i] %>
-								<%= link_to profile_repo_like_path(@user.id, @repos[i].id, @liked[i]), data: { turbo_method: :delete } do %>
-									<div class="ui black label">
-										<i class="<%= "star yellow icon" %>"></i><%= @counts[i] %>
-									</div>
+						<%= turbo_frame_tag "like_#{i}" do %>
+							<div class="repo-btn">
+								<% if @liked[i] %>
+									<%= link_to profile_repo_like_path(@user.id, @repos[i].id, @liked[i]), data: { turbo_method: :delete } do %>
+										<div class="ui black label">
+											<i class="<%= "star yellow icon" %>"></i><%= @counts[i] %>
+										</div>
+									<% end %>
+								<% else %>
+									<%= link_to profile_repo_likes_path(@user.id, @repos[i].id), data: { turbo_method: :post } do %>
+										<div class="ui black label">
+											<i class="<%= "star grey icon" %>"></i><%= @counts[i] %>
+										</div>
+									<% end %>
 								<% end %>
-							<% else %>
-								<%= link_to profile_repo_likes_path(@user.id, @repos[i].id), data: { turbo_method: :post } do %>
-									<div class="ui black label">
-										<i class="<%= "star grey icon" %>"></i><%= @counts[i] %>
-									</div>
+								
+								<% if edit %>
+									<%= link_to repo_path(@repos[i].id), data: { turbo_method: :delete, turbo_confirm: "Do you want to delete this repo from your profile?" } do %>
+										<i class="trash link grey icon delete-repo"></i>
+									<% end %>
 								<% end %>
-							<% end %>
-							
-							<% if edit %>
-								<%= link_to repo_path(@repos[i].id), data: { turbo_method: :delete, turbo_confirm: "Do you want to delete this repo from your profile?" } do %>
-									<i class="trash link grey icon delete-repo"></i>
-								<% end %>
-							<% end %>
-						</div>
+							</div>
+						<% end %>
 					<% end %>
 				</div>
 			<% end %>

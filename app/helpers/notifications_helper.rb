@@ -1,11 +1,11 @@
-module NotificationsHelpers
+module NotificationsHelper
 
-	def create(kind)
+	def create_notification(kind)
 		notification = Notification.create!(user: current_user)
 		case kind
-		when 0 then notification.request!
-		when 1 then notification.repo!
-		when 2 then notification.job!
+		when :request then notification.request!
+		when :repo then notification.repo!
+		when :job then notification.job!
 		end
 
 		sent_notification(notification)
@@ -13,8 +13,8 @@ module NotificationsHelpers
 
 	def sent_notification(notification)
 		user = notification.user
-		followers = Connection.select('sent_id AS user_id').where(received_id: user.id)
-		followers += Connection.select('received_id AS user_id').where(sent_id: user.id)
+		followers = Connection.select('sent_id AS user_id').where(received_id: user.id, status: :accepted)
+		followers += Connection.select('received_id AS user_id').where(sent_id: user.id, status: :accepted)
 		followers.each do |f|
 			UserAlert.create!(user_id: f.user_id, notification_id: notification.id)
 		end

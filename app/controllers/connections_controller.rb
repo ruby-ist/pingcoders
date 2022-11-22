@@ -2,6 +2,13 @@ class ConnectionsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_connection, only: [:update, :destroy]
 
+	def index
+		@user = User.find params[:profile_id]
+		@users = Connection.select('received_id AS user_id').where(sent_id: params[:profile_id], status: :accepted)
+		@users += Connection.select('sent_id AS user_id').where(received_id: params[:profile_id], status: :accepted)
+		@users.map! { |u| User.find(u.user_id) }
+	end
+
 	def create
 		Connection.create!(sent_id: current_user.id, received_id: params[:profile_id])
 		redirect_to profile_path(params[:profile_id])
@@ -22,7 +29,6 @@ class ConnectionsController < ApplicationController
 	private
 
 	def set_connection
-		@connection = Connection.where(sent_id: params[:profile_id], received_id: current_user.id)
-							   .or(Connection.where(sent_id: current_user.id, received_id: params[:profile_id])).first
+		@connection = Connection.find_by(sent_id: params[:profile_id], received_id: current_user.id) || Connection.find_by(sent_id: current_user.id, received_id: params[:profile_id])
 	end
 end

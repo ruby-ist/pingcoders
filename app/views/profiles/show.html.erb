@@ -29,11 +29,27 @@
 									end %>
 							</div>
 							
-							<%= link_to( "(#{@user.achievements.count}) Achievements", profile_achievements_path(@user.id), class: "achievement-link", data: {turbo: false}) %>
+							<div class="profile-btns">
+								<% if @user == current_user || (@connection && @connection.accepted?) %>
+									<%= link_to "#{@connection_count} Connections", profile_connections_path(@user.id), class: "ui blue button", data: { turbo: false } %>
+								<% elsif @connection && @connection.requested? %>
+									<%= link_to "Requested", profile_connections_path(@user.id), class: "ui disabled blue button", data: { turbo: false } %>
+								<% else %>
+									<%= link_to "Connect", profile_connections_path(@user.id), class: "ui blue button", data: { turbo_method: :post } %>
+								<% end %>
+								
+								<% if @user == current_user %>
+									<%= link_to "Edit profile", edit_profile_path(current_user.id), class: "ui black button" %>
+								<% else %>
+									<%= link_to "Message", room_path(@user.id), class: "ui secondary button", data: { turbo: false } %>
+								<% end %>
+							</div>
+							<br/>
+							
+							<%= link_to("(#{@user.achievements.count}) Achievements", profile_achievements_path(@user.id), class: "achievement-link", data: { turbo: false }) %>
 							
 							<div class="horizontal-line"></div>
 						</div>
-						<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
 					</div>
 				<% end %>
 				<div class="contacts">
@@ -117,7 +133,7 @@
 					<%= turbo_frame_tag "projects" do %>
 						<div class="division">
 							<div class="ui large header">Projects:</div>
-							<%= render partial: "repos/index", locals: {edit: false } %>
+							<%= render partial: "repos/index", locals: { edit: false } %>
 							<%= link_to "edit", edit_profile_path(current_user.id), class: "edit-btn" if @user == current_user %>
 						</div>
 					<% end %>

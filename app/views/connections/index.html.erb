@@ -1,0 +1,22 @@
+<div class="search-wrapper">
+	<div class="ui container search-box">
+		<div data-controller="search" data-search-default-url-value="<%= image_path('profile-pic.jpg') %>">
+			<div class="ui grey header connection-header"><%= link_to @user.name, profile_path(@user.id) %> 's
+				connections
+			</div>
+			<hr style="border-color: var(--dark-grey)"/>
+			<br/>
+			
+			<div class="connection-list">
+				<% @users.each do |user| %>
+					<div class="connection">
+						<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+						<%= link_to room_path(user.id) do %>
+							<div ><%= user.name %></div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

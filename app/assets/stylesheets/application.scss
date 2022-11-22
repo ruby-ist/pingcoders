@@ -50,7 +50,7 @@ a:hover{
 }
 
 a.ui.button:hover{
-	color: var(--white) !important;
+	color: whitesmoke !important;
 }
 
 .ui.sticky {
@@ -179,6 +179,24 @@ a.ui.button:hover{
 	justify-content: center;
 	align-content: center;
 	text-align: center;
+
+	.profile-btns{
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+
+		.ui.black.button{
+			background: #191c22;
+			color: var(--white);
+			border: 1px solid #2a2d33;
+
+			&:hover {
+				background: #24292e;
+				border-color: #6e7882;
+			}
+
+		}
+	}
 
 	#address {
 		width: 20vw;
@@ -334,7 +352,7 @@ a.ui.button:hover{
 	border: 1px solid #2a2d33;
 
 	&:hover {
-		color: var(--white);
+		color: var(--white) !important;
 		background: #24292e;
 		border-color: #6e7882;
 	}
@@ -1102,6 +1120,38 @@ i.trash.link.icon.delete-repo {
 		border-bottom-left-radius: 15px;
 		border-bottom-right-radius: 15px;
 		margin-bottom: -5px;
+	}
+}
+
+.connection-header{
+	color: var(--light-grey) !important;
+}
+
+.connection-list{
+	display: flex;
+	flex-flow: row wrap;
+
+
+	.connection{
+		width: 30%;
+		background: var(--dark-grey);
+		padding: 15px 30px;
+		border: 1px solid var(--main-background);
+		border-radius: 10px;
+		margin-bottom: 30px;
+		margin-right: 3%;
+
+		img, a{
+			display: inline-block;
+		}
+
+		a{
+			font-size: 1.3rem;
+			font-weight: 500;
+			margin-left: 10px;
+			width: 70%;
+			word-break: break-all;
+		}
 	}
 }
 
