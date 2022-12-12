@@ -104,7 +104,7 @@ a.ui.button:hover{
 			}
 		}
 
-		a:last-child{
+		a.negative.button{
 			margin-left: 20px;
 			padding: 10px 20px;
 			width: initial;
@@ -1178,6 +1178,10 @@ i.trash.link.icon.delete-repo {
 		border-bottom: 1px solid var(--dark-grey);
 		padding: 15px 20px;
 
+		img{
+			margin: auto 15px !important;
+		}
+
 		a {
 			color: #4183C4;
 			width: max-content;
@@ -1185,10 +1189,16 @@ i.trash.link.icon.delete-repo {
 			margin-right: 5px;
 		}
 
+		&:first-of-type{
+			img{
+				margin: 0 !important;
+			}
+		}
+
 	}
 
-	.request.notification{
-		padding: 5px 20px;
+	.notification.request{
+		padding-bottom: 5px;
 
 		.buttons{
 			text-align: right;

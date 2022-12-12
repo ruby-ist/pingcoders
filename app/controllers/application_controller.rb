@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     def get_notifications
         if user_signed_in?
-            @notifications = current_user.notifications
+            @notifications = current_user.notifications.reverse
         else
             @notifications = []
         end

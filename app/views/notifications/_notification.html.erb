@@ -1,7 +1,7 @@
 <% if notification.request? %>
 	<div class="notification request">
 		<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
-		<%= link_to notification.user.name, profile_path(user.id) %> wants to connect <br/>
+		<%= link_to notification.user.name, profile_path(user.id) %> sent a connection request <br/>
 		<div class="buttons">
 			<%= button_to notification_path(notification.id), class: "ui blue button", method: :patch do %>
 				Accept
@@ -11,15 +11,13 @@
 	</div>
 <% elsif notification.job? %>
 	<div class="notification">
-		<a style="width: max-content; margin: auto 15px">
-			<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
-		</a>
+		<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
 		<%= link_to notification.user.name, profile_path(user.id) %> posted a new job opportunity
 	</div>
 <% elsif notification.accepted? %>
 	<div class="notification request">
 		<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
-		<%= link_to notification.user.name, profile_path(user.id) %> wants to connect <br/>
+		<%= link_to notification.user.name, profile_path(user.id) %> sent a connection request <br/>
 		<div class="buttons">
 			<%= button_to notification_path(notification.id), class: "ui black button", method: :patch do %>
 				Disconnect
@@ -29,9 +27,7 @@
 	</div>
 <% else %>
 	<div class="notification">
-		<a style="width: max-content; margin: auto 15px">
-			<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
-		</a>
+		<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
 		<%= link_to notification.user.name, profile_path(user.id) %> updated their projects <br/>
 	</div>
 <% end %>
