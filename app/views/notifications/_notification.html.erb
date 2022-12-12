@@ -3,12 +3,9 @@
 		<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
 		<%= link_to notification.user.name, profile_path(user.id) %> wants to connect <br/>
 		<div class="buttons">
-			<!--	Some UI fix about last a child buttons in here-->
-			<div class="ui blue button">Accept</div>
-			<div class="ui black button">Deny</div>
-			<!--	Add object_id column to Notification table-->
-			<!--	create notification controller-->
-			<!--	update the connections with notification controller-->
+			<%= button_to notification_path(notification.id), class: "ui blue button", method: :patch do %>
+				Accept
+			<% end %>
 		</div>
 		<br/>
 	</div>
@@ -18,6 +15,17 @@
 			<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
 		</a>
 		<%= link_to notification.user.name, profile_path(user.id) %> posted a new job opportunity
+	</div>
+<% elsif notification.accepted? %>
+	<div class="notification request">
+		<%= image_tag (user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
+		<%= link_to notification.user.name, profile_path(user.id) %> wants to connect <br/>
+		<div class="buttons">
+			<%= button_to notification_path(notification.id), class: "ui black button", method: :patch do %>
+				Disconnect
+			<% end %>
+		</div>
+		<br/>
 	</div>
 <% else %>
 	<div class="notification">

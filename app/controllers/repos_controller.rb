@@ -23,8 +23,8 @@ class ReposController < ApplicationController
     def create
         user = current_user
         name = params[:name]
-        user.repos << Repo.create(name: name)
-        create_notification :repo
+        repo = Repo.create(name: name, user: user)
+        create_notification :repo, repo.id
         redirect_to edit_profile_path(user.id)
     end
 

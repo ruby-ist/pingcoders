@@ -13,15 +13,19 @@ class ConnectionsController < ApplicationController
 	end
 
 	def create
-		Connection.create!(sent_id: current_user.id, received_id: params[:profile_id])
-		notification = create_notification :request
-		UserAlert.create!(user_id: params[:profile_id], notification: notification.id)
+		connection = Connection.create!(sent_id: current_user.id, received_id: params[:profile_id])
+		notification = create_notification :request, connection.id
+		UserAlert.create!(user_id: params[:profile_id], notification_id: notification.id)
 		redirect_to profile_path(params[:profile_id])
 	end
 
 	def update
 		if @connection
 			@connection.accepted!
+			notification = Notification.find_by kind: "request", object_id: @connection.id
+			if notification
+				notification.accepted!
+			end
 		end
 		redirect_to profile_path(params[:profile_id])
 	end

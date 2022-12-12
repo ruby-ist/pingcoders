@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
 		respond_to do |format|
 			if @post.save
-				create_notification :job
+				create_notification :job, @post.id
 				format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
 				format.json { render :show, status: :created, location: @post }
 			else

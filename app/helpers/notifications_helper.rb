@@ -1,7 +1,7 @@
 module NotificationsHelper
 
-	def create_notification(kind)
-		notification = Notification.create!(user: current_user)
+	def create_notification(kind, object_id)
+		notification = Notification.create!(user: current_user, object_id: object_id)
 		case kind
 		when :request then notification.request!
 		when :repo then notification.repo!
