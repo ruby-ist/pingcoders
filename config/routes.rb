@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 		resources :emails, except: [:index, :show]
 		resources :numbers, except: [:index, :show]
 		resources :addresses, except: [:index, :show]
+		resources :companies, except: [:index, :show]
 
 		resources :languages, only: [:destroy]
 		resources :skills, only: [:destroy]

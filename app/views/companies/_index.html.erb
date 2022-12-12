@@ -1,0 +1,13 @@
+<% @user.companies.each do |company| %>
+	<%= turbo_frame_tag dom_id(company) do %>
+		<li>
+			<div class="inline-edit"><%= company.role %></div> at <div class="inline-edit"><%= company.name %></div>
+			<%= link_to edit_profile_company_path(@user.id, company.id) do %>
+				<i class="edit outline blue link icon"></i>
+			<% end %>
+			<%= link_to "/profiles/#{@user.id}/addresses/#{company.id}", data: {turbo_method: :delete } do %>
+				<i class="trash alternate outline blue link icon"></i>
+			<% end %>
+		</li>
+	<% end %>
+<% end %>

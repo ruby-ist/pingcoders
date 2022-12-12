@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(@company) do %>
+	<%= form_with url: profile_company_path(@profile_id, @company.id), method: :patch do |f| %>
+		<div class="lined-input">
+			<li>
+				<%= f.text_field "role", value: @company.role, placeholder: "role", autocomplete: "off", required: true %> at
+				<%= f.text_field "name", value: @company.name, placeholder: "name", autocomplete: "off", required: true %>
+				<%= f.button class: "ui compact icon button" do %>
+					<i class="save blue icon"></i>
+				<% end %>
+				<%= link_to new_profile_company_path do %>
+					<i class="close blue link icon"></i>
+				<% end %>
+			</li>
+		</div>
+	<% end %>
+<% end %>

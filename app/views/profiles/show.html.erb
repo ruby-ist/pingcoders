@@ -52,6 +52,22 @@
 						</div>
 					</div>
 				<% end %>
+				
+				<div class="companies">
+					<div class="ui large header">Experiences:</div>
+					<%= turbo_frame_tag "company" do %>
+						<div class="division">
+							<ul>
+								<% @user.companies.each do |company| %>
+									<li><%= company.role %> at <%= company.name %></li>
+								<% end %>
+							</ul>
+							<%= link_to "edit", new_profile_company_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<div class="horizontal-line"></div>
+						</div>
+					<% end %>
+				</div>
+				
 				<div class="contacts">
 					<div class="ui large header">Contact:</div>
 					<%= turbo_frame_tag "email" do %>

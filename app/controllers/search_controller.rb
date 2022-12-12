@@ -37,6 +37,15 @@ class SearchController < ApplicationController
                 render inline: '<div class="no-result" style="text-align: center">No Match Found!</div>'
             end
             return
+        when "Company"
+            users = User.all.to_a.select{ |i| i.companies.length > 0 }
+            data = []
+            users.each do |i|
+                companies = i.companies.where("name " + ENV["like"] + " ?", "%"+ Company.sanitize_sql_like(query) +"%" ).to_a
+                if companies != []
+                    data << {"id": i.id, "name": i.name, "url": i.image_url || "", "tags": companies }
+                end
+            end
         end
         render json: data
     end

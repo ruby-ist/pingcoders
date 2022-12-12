@@ -12,6 +12,7 @@ class User < ApplicationRecord
     has_many :numbers, dependent: :destroy
     has_many :emails, dependent: :destroy
     has_many :addresses, dependent: :destroy
+    has_many :companies, dependent: :destroy
     has_many :repos, dependent: :destroy
     has_many :likes, dependent: :destroy
 

@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "company" do %>
+	<div class="division">
+		<ul>
+			<%= render partial: "companies/index" %>
+			<%= form_with url: profile_companies_path(@user.id), method: :post do |f| %>
+				<div class="lined-input">
+					<%= f.text_field "role", placeholder: "role", autocomplete: "off", required: true %> at
+					<%= f.text_field "name", placeholder: "name", autocomplete: "off", required: true %>
+					<%= f.button class: "ui icon blue button" do %>
+						<i class="save icon"></i>
+					<% end %>
+				</div>
+			<% end %>
+		</ul>
+		<%= link_to "back", profile_path(@user.id), class: "edit-btn" %>
+		<div class="horizontal-line"></div>
+	</div>
+<% end %>
