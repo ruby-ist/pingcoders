@@ -59,7 +59,7 @@
 						<div class="division">
 							<ul>
 								<% @user.companies.each do |company| %>
-									<li><%= company.role %> at <%= company.name %></li>
+									<li><%= company.role %> @ <%= company.name.capitalize %></li>
 								<% end %>
 							</ul>
 							<%= link_to "edit", new_profile_company_path(current_user.id), class: "edit-btn" if @user == current_user %>

@@ -114,6 +114,10 @@ a.ui.button:hover{
 			}
 		}
 
+		a.active{
+			color: var(--blue);
+		}
+
 		a.ui.button {
 			height: 39px !important;
 		}
@@ -355,6 +359,16 @@ a.ui.button:hover{
 		color: var(--white) !important;
 		background: #24292e;
 		border-color: #6e7882;
+	}
+}
+
+.companies{
+	padding-top: 20px;
+	text-align: left;
+
+	.edit-btn{
+		top: initial;
+		bottom: 100%;
 	}
 }
 

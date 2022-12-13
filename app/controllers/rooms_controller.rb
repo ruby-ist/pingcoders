@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
 		room_users = RoomUser.where(user: current_user)
 		@rooms = room_users.map { |i| i.room }.sort_by {|room| room.messages.last.created_at}.reverse
 		@users = @rooms.map { |room| (room.users - [current_user])[0] }
+		@section = 2
 	end
 
 end

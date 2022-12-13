@@ -3,9 +3,11 @@
 		<ul>
 			<%= render partial: "companies/index" %>
 			<%= form_with url: profile_companies_path(@user.id), method: :post do |f| %>
-				<div class="lined-input">
-					<%= f.text_field "role", placeholder: "role", autocomplete: "off", required: true %> at
-					<%= f.text_field "name", placeholder: "name", autocomplete: "off", required: true %>
+				<div class="lined-input" style="display: block; margin: 10px auto;">
+					<%= f.text_field "role", placeholder: "role", autocomplete: "off", required: true %>
+					<br/>
+					@:&ensp;
+					<%= f.text_field "name", placeholder: "company name", autocomplete: "off", required: true %>
 					<%= f.button class: "ui icon blue button" do %>
 						<i class="save icon"></i>
 					<% end %>

@@ -2,6 +2,7 @@ class SearchController < ApplicationController
 
     def index
         @search = true
+        @section = 0
     end
 
     def show
