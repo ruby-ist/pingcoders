@@ -1262,7 +1262,6 @@ i.trash.link.icon.delete-repo {
 	.user-profile #address {
 		width: 70vw;
 	}
-;
 
 	.section {
 		height: auto;
@@ -1384,5 +1383,153 @@ i.trash.link.icon.delete-repo {
 
 	.ui.vertical.sidebar {
 		background: var(--blue);
+
+		.item:hover{
+			color: var(--main-background) !important;
+		}
+	}
+
+	#posts{
+		margin-top: 100px;
+	}
+
+	.post-index{
+		padding: 7% 10%;
+		.icon.input{
+			top: 80px;
+			right: 50%;
+			transform: translateX(50%);
+			width: 80%;
+		}
+
+		.ui.blue.button{
+			top: 24px;
+			right: 7%;
+		}
+
+		.job-post{
+			margin-bottom: 30px;
+
+			.job-details{
+				overflow: clip;
+				height: 180px;
+			}
+		}
+
+		h1{
+			font-size: 1.75rem;
+		}
+	}
+
+	.job-post{
+
+		.big.header{
+			font-size: 1.5em !important;
+			margin-bottom: 0.5em !important;
+		}
+
+		.header{
+			font-size: 1em !important;
+		}
+
+		.job-details{
+			font-size: 1em;
+		}
+
+		.ui.blue.button{
+			top: initial;
+			bottom: 3%;
+			right: initial;
+			left: 8%;
+		}
+
+		.post-user{
+			margin-bottom: 20px;
+
+			em{
+				margin-bottom: 5px;
+			}
+		}
+	}
+
+	html, body{
+		height: max-content;
+	}
+
+	.form-cover{
+		padding: 10%;
+		font-size: 1.2rem;
+		margin-bottom: 30px;
+
+		.black.button{
+			position: relative;
+			bottom: -19px;
+			right: 15px;
+		}
+	}
+
+	.post-form{
+		input.field{
+			display: block;
+			width: 250px;
+			margin: 10px 12px;
+		}
+
+		.post-main{
+			margin-top: 25px;
+		}
+
+		textarea.text{
+			width: 100%;
+			padding: 15px;
+			font-size: initial;
+		}
+	}
+
+	.connection-list{
+		display: block;
+		max-height: 100%;
+		overflow: auto;
+
+		.connection{
+			width: initial;
+			padding: 12px 20px;
+			margin-bottom: 10px;
+		}
+	}
+
+	.companies{
+		a.edit-btn{
+			top: initial !important;
+			margin-bottom: 10px;
+		}
+	}
+
+	#achievements{
+		margin-top: 50px;
+	}
+
+	.achievement{
+		margin-bottom: 20px;
+		.achievement-user{
+			padding: 12px 20px;
+			border-bottom: 1px solid var(--dark-grey);
+
+			span{
+				font-size: 1.2rem;
+			}
+
+			.time{
+				font-size: 1rem;
+			}
+		}
+
+		.description{
+			font-size: 1.1rem;
+			padding: 10px;
+			margin-bottom: 0;
+			max-height: 100px;
+			overflow: clip;
+		}
 	}
 }
