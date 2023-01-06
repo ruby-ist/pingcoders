@@ -875,6 +875,10 @@ i.trash.link.icon.delete-repo {
 			height: 48px;
 			margin: auto 25px;
 		}
+
+		.back-icon{
+			display: none;
+		}
 	}
 
 	.room-user-name{
@@ -1235,6 +1239,11 @@ i.trash.link.icon.delete-repo {
 		}
 	}
 
+	#main{
+		height: calc(100vh - 80px);
+		margin-top: 80px;
+	}
+
 	#skillsets {
 		width: 100vw;
 		padding: 0;
@@ -1367,10 +1376,7 @@ i.trash.link.icon.delete-repo {
 		width: 100%;
 		top: 0;
 		z-index: 4;
-	}
-
-	#main {
-		margin-top: 10vh;
+		height: 80px;
 	}
 
 	.mobile-session-btn {
@@ -1453,7 +1459,8 @@ i.trash.link.icon.delete-repo {
 	}
 
 	html, body{
-		height: max-content;
+		height: 100%;
+		overflow: clip;
 	}
 
 	.form-cover{
@@ -1531,5 +1538,87 @@ i.trash.link.icon.delete-repo {
 			max-height: 100px;
 			overflow: clip;
 		}
+	}
+
+	.message-index{
+		padding: 0 !important;
+		position: relative;
+		height: calc(100% - 80px);
+		overflow: scroll;
+
+		.chats{
+			background: var(--main-background);
+		}
+
+		.chat-header{
+			height: 80px;
+		}
+	}
+
+	.chat-room{
+		position: absolute !important;
+		margin-top: 0;
+		z-index: -1;
+		height: calc(100% - 80px);
+		overflow: hidden;
+
+		.room-header{
+			display: flex;
+			align-items: center;
+			height: 80px;
+
+			img.mini{
+				margin: auto 10px auto 0;
+				height: 36px;
+				width: 36px;
+			}
+
+			.room-user-name{
+				margin: 0;
+				font-size: 1.5rem;
+			}
+
+			.back-icon{
+				display: block;
+				color: var(--light-grey);
+			}
+		}
+
+		.msg-input{
+			height: 80px;
+			position: absolute;
+			bottom: 0;
+
+			form{
+				.ui.input{
+					width: 90%;
+				}
+
+				.msg-send{
+					position: absolute;
+					right: 4%;
+					height: 60%;
+				}
+			}
+
+			input.msg-field, input.msg-field:focus{
+				padding-right: 25%;
+				font-size: 1rem;
+			}
+		}
+
+		.actual-chats {
+			height: calc(100% - 160px);
+			top: 80px;
+			.actual-message .content {
+				font-size: 1rem;
+			}
+		}
+	}
+
+	#rooms .no-result{
+		display: grid;
+		place-items: center;
+		height: inherit;
 	}
 }

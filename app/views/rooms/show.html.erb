@@ -1,8 +1,11 @@
 <%= turbo_stream_from "room" %>
 <div class="ui grid">
 	<%= render partial: 'rooms/chat_list' %>
-	<div class="eleven wide column chat-room">
+	<div class="sixteen wide mobile eleven wide computer column chat-room" style="z-index: 2">
 		<div class="room-header">
+			<%= link_to rooms_path, class: "back-icon" do %>
+				<i class="large arrow left link icon" style="margin: 10px"></i>
+			<% end %>
 			<%= image_tag (@user.image_url || 'profile-pic.jpg'), class: "ui mini avatar image" %>
 			<div class="ui large header room-user-name"><%= @user.name %></div>
 		</div>

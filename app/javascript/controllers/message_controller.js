@@ -12,6 +12,9 @@ export default class extends Controller {
 			}
 		});
 		this.scrollToBottom();
+		
+		const elem = document.documentElement;
+		if (elem.requestFullscreen) {elem.requestFullscreen()}
 	}
 	
 	scrollToBottom(){
