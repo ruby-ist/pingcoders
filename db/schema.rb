@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_152406) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_17_102603) do
   create_table "achievements", force: :cascade do |t|
     t.string "description"
     t.string "image_url"
@@ -45,6 +45,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_152406) do
     t.datetime "updated_at", null: false
     t.index ["received_id"], name: "index_connections_on_received_id"
     t.index ["sent_id"], name: "index_connections_on_sent_id"
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string "institute"
+    t.integer "passed_year"
+    t.string "degree"
+    t.float "percentage"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_educations_on_user_id"
   end
 
   create_table "emails", force: :cascade do |t|

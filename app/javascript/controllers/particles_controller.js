@@ -97,7 +97,7 @@ export default class extends Controller {
 						"density": {
 							"enable": true
 						},
-						"value": 100
+						"value": 200
 					},
 					"opacity": {
 						"value": 0.5,

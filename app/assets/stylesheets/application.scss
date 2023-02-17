@@ -306,6 +306,9 @@ a.ui.button:hover{
 
 .main-profile {
 	position: relative;
+	img{
+		margin: auto;
+	}
 
 	.achievement-link{
 		display: block;
@@ -369,6 +372,27 @@ a.ui.button:hover{
 	.edit-btn{
 		top: initial;
 		bottom: 100%;
+	}
+}
+
+.education{
+	width: 65%;
+
+	.link-icon{
+		position: absolute;
+		right: 0;
+	}
+
+	.education-list{
+		padding-left: 10px;
+	}
+
+	.full{
+		width: 100%;
+	}
+
+	.small{
+		width: 35%;
 	}
 }
 

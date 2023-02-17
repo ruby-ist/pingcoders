@@ -15,6 +15,7 @@ class User < ApplicationRecord
     has_many :companies, dependent: :destroy
     has_many :repos, dependent: :destroy
     has_many :likes, dependent: :destroy
+    has_many :educations, dependent: :destroy
 
     has_many :room_users, dependent: :destroy
     has_many :rooms, through: :room_users

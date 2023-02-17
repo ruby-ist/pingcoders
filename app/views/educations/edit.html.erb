@@ -1,0 +1,19 @@
+<%= turbo_frame_tag dom_id(@education) do %>
+	<%= form_with url: profile_education_path(@profile_id, @education.id), method: :patch do |f| %>
+		<div class="lined-input" style="display: block; margin: 10px auto;">
+			<i class="list icon"></i>
+			<%= f.text_field "institute", class: "full", placeholder: "Institute name", autocomplete: "off", required: true, value: @education.institute %>
+			<br/>
+			<%= f.text_field "degree", class: "full", placeholder: "course name", autocomplete: "off", required: true, value: @education.degree %>
+			<br/>
+			<%= f.text_field "percentage", class: "small", placeholder: "CGPA or %", autocomplete: "off", required: true, value: @education.percentage %> &ensp;|&ensp;
+			<%= f.text_field "passed_year", class: "small", placeholder: "passed year", autocomplete: "off", required: true, value: @education.passed_year %>
+			<%= f.button class: "ui icon blue button" do %>
+				<i class="save icon"></i>
+			<% end %>
+			<%= link_to new_profile_education_path do %>
+				<i class="close blue link icon"></i>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>

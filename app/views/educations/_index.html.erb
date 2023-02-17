@@ -1,0 +1,20 @@
+<% @user.educations.each do |education| %>
+	<%= turbo_frame_tag dom_id(education) do %>
+		<i class="list icon"></i>
+		<ul>
+			<li><%= education.institute %></li>
+			<li><%= education.degree %></li>
+			<li><%= education.percentage %> &ensp;|&ensp; <%= education.passed_year %></li>
+		</ul>
+		
+		<div class="link-icon">
+			<%= link_to edit_profile_education_path(@user.id, education.id) do %>
+				<i class="edit outline blue link icon"></i>
+			<% end %>
+			<%= link_to "/profiles/#{@user.id}/educations/#{education.id}", data: { turbo_method: :delete } do %>
+				<i class="trash alternate outline blue link icon"></i>
+			<% end %>
+		</div>
+	<% end %>
+	<br/>
+<% end %>

@@ -40,10 +40,17 @@ class ProfilesController < ApplicationController
 		redirect_to profile_path(user.id)
 	end
 
+	def resume
+		@user = User.includes(:repos, :languages, :skills, :addresses, :numbers, :achievements, :companies, :emails, :educations).find(params[:profile_id])
+		html = render_to_string "resume/resume", layout: false
+		pdf = WickedPdf.new.pdf_from_string(html)
+		send_data pdf, filename: "resume", type: "application/pdf"
+	end
+
 	private
 
 	def get_repo_details(id)
-		user = User.find params[:id]
+		user = User.find id
 		repos = user.repos.reverse
 		liked = []
 		counts = []

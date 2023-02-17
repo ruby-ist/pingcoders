@@ -7,11 +7,13 @@ Rails.application.routes.draw do
 
 	resources :search, only: [:index, :show]
 	resources :profiles, only: [:index, :show, :edit, :update] do
+		get "/resume", to: "profiles#resume", as: :resume
 		resources :achievements
 		resources :emails, except: [:index, :show]
 		resources :numbers, except: [:index, :show]
 		resources :addresses, except: [:index, :show]
 		resources :companies, except: [:index, :show]
+		resources :educations, except: [:index, :show]
 
 		resources :languages, only: [:destroy]
 		resources :skills, only: [:destroy]
@@ -35,5 +37,4 @@ Rails.application.routes.draw do
 	resources :notifications, only: [:update]
 
 	get "picture/update", to: "profiles#picture"
-
 end

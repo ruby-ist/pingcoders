@@ -9,11 +9,11 @@
 						<img class="ui circular image profile-img" src="<%= @user.image_url || image_url("profile-pic.jpg") %>">
 						<p class="ui large header"><span class="username"><%= @user.name %></span></p>
 						<div class="other-profiles division">
-							<div onclick="window.open('https://srira.me')" class="portfolio-link">
-								<% if @user.portfolio_url %>
+							<% if @user.portfolio_url %>
+								<div onclick="window.open(<%= @user.portfolio_url %>)" class="portfolio-link">
 									<i class="external alternate icon"></i><%= @user.portfolio_url %>
-								<% end %>
-							</div>
+								</div>
+							<% end %>
 							<div class="svg-icons">
 								<%= if @user.github_username
 										image_tag "github.svg", onclick: "window.open('https://github.com/" + @user.github_username + "')"
@@ -46,12 +46,39 @@
 							</div>
 							<br/>
 							
+							<%= button_to profile_resume_path(@user.id), class: "ui basic green icon button", data: { turbo: false }, method: :get do %>
+								<i class="download icon"></i>
+								Resume
+							<% end %>
+							<br/>
+							
 							<%= link_to("(#{@user.achievements.count}) Achievements", profile_achievements_path(@user.id), class: "achievement-link", data: { turbo: false }) %>
 							
 							<div class="horizontal-line"></div>
 						</div>
 					</div>
 				<% end %>
+				
+				
+				<div class="companies education">
+					<div class="ui large header">Educations:</div>
+					<%= turbo_frame_tag "education" do %>
+						<div class="division">
+							<ul class="education-list">
+								<% @user.educations.each do |education| %>
+									<i class="list icon"></i>
+										<ul>
+											<li><%= education.institute %></li>
+											<li><%= education.degree %></li>
+											<li><%= education.percentage %> &ensp;|&ensp; <%= education.passed_year %></li>
+										</ul>
+								<% end %>
+							</ul>
+							<%= link_to "edit", new_profile_education_path(current_user.id), class: "edit-btn" if @user == current_user %>
+							<div class="horizontal-line"></div>
+						</div>
+					<% end %>
+				</div>
 				
 				<div class="companies">
 					<div class="ui large header">Experiences:</div>
@@ -67,6 +94,7 @@
 						</div>
 					<% end %>
 				</div>
+				
 				
 				<div class="contacts">
 					<div class="ui large header">Contact:</div>

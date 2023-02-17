@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "education" do %>
+<div class="division">
+	<ul class="education-list">
+		<%= render partial: "educations/index" %>
+		<%= form_with url: profile_educations_path(@user.id), method: :post do |f| %>
+		<div class="lined-input" style="display: block; margin: 10px auto;">
+			<%= f.text_field "institute", class: "full", placeholder: "Institute name", autocomplete: "off", required: true %>
+			<br/>
+			<%= f.text_field "degree", class: "full", placeholder: "course or degree name", autocomplete: "off", required: true %>
+			<br/>
+			<%= f.text_field "percentage", class: "small", placeholder: "CGPA or %", autocomplete: "off", required: true %> &ensp;| &ensp;
+			<%= f.text_field "passed_year", class: "small", placeholder: "passed year", autocomplete: "off", required: true %>
+			<%= f.button class: "ui icon blue button" do %>
+			<i class="save icon"></i>
+			<% end %>
+		</div>
+		<% end %>
+	</ul>
+	<%= link_to "back", profile_path(@user.id), class: "edit-btn" %>
+	<div class="horizontal-line"></div>
+</div>
+<% end %>

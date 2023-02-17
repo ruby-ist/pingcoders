@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+        body {
+            font-family: "Garamond", Serif;
+        }
+
+        div {
+            margin: 5px 0;
+        }
+	</style>
+</head>
+<body>
+<h1 style="text-align: center; margin-bottom: 10px"> <%= @user.name %> </h1>
+<div align="center">
+	<div style="margin-bottom: 10px;"> <%= [@user.emails.map(&:email) + @user.numbers.map(&:number)] * "  |  " %>
+	</div>
+	<div style="display: inline-block; height: 1px; width: 100px; border-bottom: 1px solid black;"></div>
+	<% @user.addresses.each do |a| %>
+		<div> <%= a.address %> </div>
+	<% end %>
+	<br/>
+</div>
+
+<hr/>
+
+<% unless @user.educations.empty? %>
+	<div style="padding: 0 60px">
+		<h2> Educations: </h2>
+		<ul>
+			<% @user.educations.each do |education| %>
+				<li style="list-style: circle">
+					<ul>
+						<li style="list-style: square"><%= education.institute %></li>
+						<li style="list-style: square"><%= education.degree %></li>
+						<li style="list-style: square"><%= education.percentage %> | <%= education.passed_year %></li>
+					</ul>
+				</li>
+				<br/>
+			<% end %>
+		</ul>
+	</div>
+	<hr/>
+<% end %>
+
+<% unless @user.companies.empty? %>
+	<div style="padding: 0 60px">
+		<h2> Experiences: </h2>
+		<ul>
+			<% @user.companies.each do |company| %>
+				<li> <%= company.role %> - <%= company.name %></li>
+			<% end %>
+		</ul>
+	</div>
+	<hr/>
+<% end %>
+
+<div style="padding: 0 60px">
+	<h2> Technical Skills: </h2>
+	<% unless @user.languages.empty? %>
+		<div>
+			<h4 style="display: inline-block">Languages: </h4><br/>
+			<%= @user.languages.map(&:name) * ", " %>
+		</div>
+	<% end %>
+	
+	<% unless @user.skills.empty? %>
+		<div>
+			<h4 style="display: inline-block">Frameworks & tools: </h4><br/>
+			<%= @user.skills.map(&:name) * ", " %>
+		</div>
+	<% end %>
+	<br/>
+</div>
+<hr/>
+
+<% unless @user.repos.empty? %>
+	<div style="padding: 0 60px">
+		<h2> Projects </h2>
+		<% @user.repos.each do |repo| %>
+			<li style="list-style: circle"><b><%= repo.name %>:</b></li>
+			<br/>
+			<span style="padding-left: 30px;"> Github Link: <%= "https://github.com/#{@user.github_username}/#{repo.name}" %> </span>
+			<br/>
+			<br/>
+		<% end %>
+	</div>
+	<hr/>
+<% end %>
+
+<% unless @user.achievements.empty? %>
+	<div style="padding: 0 60px">
+		<h2> Certificates: </h2>
+		<ul>
+			<% @user.achievements.each do |achievement| %>
+				<li> <%= achievement.description %>
+			<% end %>
+		</ul>
+	</div>
+	<hr/>
+<% end %>
+
+<div style="padding: 0 60px">
+	<h2> Profiles </h2>
+	<div style="padding-left: 20px">
+		<% if @user.github_username %>
+			<b>Github: </b> <%= "https://github.com/#{@user.github_username}" %>
+		<% end %>
+		<br/>
+		
+		<% if @user.hackerrank_username %>
+			<b>Hackerrank: </b> <%= "https://hackerrank.com/#{@user.hackerrank_username}" %>
+		<% end %>
+		<br/>
+		
+		<% if @user.linkedin_url %>
+			<b>Linkedin: </b> <%= @user.linkedin_url %>
+		<% end %>
+		<br/>
+		
+		<% if @user.stackoverflow_url %>
+			<b>Stackoverflow: </b> <%= @user.stackoverflow_url %>
+		<% end %>
+	</div>
+</div>
+</body>
+</html>
+
+
+

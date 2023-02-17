@@ -141,6 +141,15 @@
 				<% end %>
 			</div>
 			
+			<%= button_to profile_resume_path(@user.id), class: "ui basic green icon button", data: { turbo: false }, method: :get do %>
+				<i class="download icon"></i>
+				Resume
+			<% end %>
+			<br/>
+			
+			<%= link_to("(#{@user.achievements.count}) Achievements", profile_achievements_path(@user.id), class: "achievement-link", data: { turbo: false }) %>
+			
+			
 			<div class="horizontal-line"></div>
 		</div>
 		<%= link_to "back", profile_path(@user.id), class: "edit-btn" %>
