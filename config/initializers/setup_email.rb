@@ -1,4 +1,4 @@
-ActionMailer::Base.default_url_options = { :host => 'pingcoders.herokuapp.com' }
+ActionMailer::Base.default_url_options = { :host => 'pingcoders.onrender.com' }
 ActionMailer::Base.smtp_settings = {
     user_name: "sriram14641@gmail.com",
     password: ENV["google_app_password"],
