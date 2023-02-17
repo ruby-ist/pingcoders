@@ -7,8 +7,8 @@ export default class extends Controller {
 	
 	connect(){
 		this.messageTargets.forEach((message) => {
-			if(message.dataset.userId == this.cuserValue){
-				message.classList.add('right-message');
+			if(message.dataset.userId != this.cuserValue){
+				message.classList.add('left-message');
 			}
 		});
 		this.scrollToBottom();

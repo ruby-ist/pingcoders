@@ -920,6 +920,7 @@ i.trash.link.icon.delete-repo {
 
 		.actual-message{
 			margin-bottom: 2px;
+			text-align: right;
 
 			.content {
 				background: var(--dark-grey);
@@ -938,7 +939,7 @@ i.trash.link.icon.delete-repo {
 					position: absolute;
 					bottom: 0;
 					width: max-content;
-					left: 105%;
+					right: 105%;
 				}
 			}
 		}
@@ -982,15 +983,15 @@ i.trash.link.icon.delete-repo {
 	}
 }
 
-.right-message{
-	text-align: right;
+.left-message{
+	text-align: left !important;
 
 	.content{
 		background: #1d5191 !important;
 
 		.msg-time{
-			left: initial !important;
-			right: 105% !important;
+			right: initial !important;
+			left: 105% !important;
 		}
 	}
 }
