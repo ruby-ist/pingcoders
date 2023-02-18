@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_102603) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_065329) do
   create_table "achievements", force: :cascade do |t|
     t.string "description"
     t.string "image_url"
@@ -115,6 +115,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_102603) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_numbers_on_user_id"
+  end
+
+  create_table "post_skills", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_skills_on_post_id"
+    t.index ["skill_id"], name: "index_post_skills_on_skill_id"
   end
 
   create_table "posts", force: :cascade do |t|

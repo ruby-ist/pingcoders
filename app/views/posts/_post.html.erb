@@ -9,10 +9,20 @@
 	
 	<em> &nbsp &#8226 &nbsp  <%= time_ago_in_words post.created_at %> ago</em>
 	
-	
 	<hr style="border-color: var(--dark-grey);margin-bottom: 40px"/>
 	
 	<p class="job-details">
 		<%= truncate post.body, length: 900 %>
 	</p>
+	
+	<% unless post.skills.empty? %>
+		<div>
+			Skills required:&ensp;&ensp;
+			<% post.skills.each do |skill| %>
+				<div class="ui blue label">
+					<%= skill.name %>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
 </div>

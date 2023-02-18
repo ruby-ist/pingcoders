@@ -21,6 +21,11 @@
 		<%= form.text_field :project, class: "field" %>
 	</div>
 	
+	<div>
+		<%= form.label :required_skills, style: "display: inline-block" %>:
+		<%= form.text_field :required_skills, class: "field", placeholder: "Seperated by commas" %>
+	</div>
+	
 	<div class="post-main">
 		<%= form.label :job_details, style: "display: inline-block" %>:
 		<%= form.text_area :body, class: "text" %>

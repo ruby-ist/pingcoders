@@ -8,7 +8,12 @@ class PostsController < ApplicationController
 
 	# GET /posts or /posts.json
 	def index
-		@posts = Post.order created_at: :desc
+		posts = Post.includes(:skills).order created_at: :desc
+		user_skills = current_user.skills.map(&:name) + current_user.languages.map(&:name)
+		@posts = posts.select do |post|
+			!(post.skills.map(&:name) & user_skills).empty?
+		end
+		@posts = posts if @posts.empty?
 	end
 
 	# GET /posts/1 or /posts/1.json
@@ -30,6 +35,10 @@ class PostsController < ApplicationController
 
 		respond_to do |format|
 			if @post.save
+				params[:post][:required_skills].split(",").map(&:strip).each do |name|
+					name = name.gsub("-", " ").capitalize
+					@post.skills << Skill.find_or_create_by(name: name)
+				end
 				create_notification :job, @post.id
 				format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
 				format.json { render :show, status: :created, location: @post }
@@ -44,6 +53,16 @@ class PostsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @post.update(post_params)
+				skills = @post.skills.map(&:name)
+
+				new_skills = params[:post][:required_skills].split(",").map do |name|
+					name.strip.gsub("-", " ").capitalize
+				end
+
+				(new_skills - skills).each do |name|
+					@post.skills << Skill.find_or_create_by(name: name)
+				end
+
 				format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
 				format.json { render :show, status: :ok, location: @post }
 			else
