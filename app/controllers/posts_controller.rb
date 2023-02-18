@@ -9,9 +9,12 @@ class PostsController < ApplicationController
 	# GET /posts or /posts.json
 	def index
 		posts = Post.includes(:skills).order created_at: :desc
-		user_skills = current_user.skills.map(&:name) + current_user.languages.map(&:name)
-		@posts = posts.select do |post|
-			!(post.skills.map(&:name) & user_skills).empty?
+		@posts = []
+		if user_signed_in?
+			user_skills = current_user.skills.map(&:name) + current_user.languages.map(&:name)
+			@posts = posts.select do |post|
+				!(post.skills.map(&:name) & user_skills).empty?
+			end
 		end
 		@posts = posts if @posts.empty?
 	end
