@@ -96,6 +96,6 @@ class PostsController < ApplicationController
 	end
 
 	def set_section
-		@section = 1
+		@section = 2
 	end
 end

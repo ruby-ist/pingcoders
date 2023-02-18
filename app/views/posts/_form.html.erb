@@ -23,7 +23,11 @@
 	
 	<div>
 		<%= form.label :required_skills, style: "display: inline-block" %>:
-		<%= form.text_field :required_skills, class: "field", placeholder: "Seperated by commas" %>
+		<% if post.skills.empty? %>
+			<%= form.text_field :required_skills, class: "field", placeholder: "Seperated by commas" %>
+		<% else %>
+			<%= form.text_field :required_skills, class: "field", placeholder: "Seperated by commas", value: post.skills.map(&:name) * ", " %>
+		<% end %>
 	</div>
 	
 	<div class="post-main">
