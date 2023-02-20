@@ -37,5 +37,5 @@ Rails.application.routes.draw do
 	resources :notifications, only: [:update]
 
 	get "picture/update", to: "profiles#picture"
-	get "admin", to: "admins#index", as: :admins
+	# get "admin", to: "admins#index", as: :admins
 end
