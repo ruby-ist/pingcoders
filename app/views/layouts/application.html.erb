@@ -99,7 +99,7 @@
 	<% end %>
 	
 	<script>
-		document.querySelectorAll('.session-btn a')[<%= @section || 4 %>].classList.add('active');
+		document.querySelectorAll('.session-btn a')[<%= (@section || 4) - 1 %>].classList.add('active');
 	</script>
 	
 	<div id="main">
