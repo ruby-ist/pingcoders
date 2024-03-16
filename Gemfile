@@ -96,3 +96,5 @@ gem "redcarpet", "~> 3.5"
 
 gem 'wicked_pdf'
 
+
+gem "activeadmin", "~> 3.2"
