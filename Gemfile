@@ -107,3 +107,5 @@ gem 'base64', '~> 0.3.0'
 gem 'bigdecimal', '~> 4.1'
 
 gem 'benchmark', '~> 0.5.0'
+
+gem "ostruct", "~> 0.6.3"
