@@ -107,4 +107,4 @@ gem 'bigdecimal', '~> 4.1'
 
 gem 'benchmark', '~> 0.5.0'
 
-gem "ostruct", "~> 0.6.3"
+gem 'ostruct', '~> 0.6.3'
